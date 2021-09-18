@@ -1,5 +1,8 @@
 node_modules/
 .expo/
+@react-native-community/
+@react-navigation/
+static/
 npm-debug.*
 *.jks
 *.p8

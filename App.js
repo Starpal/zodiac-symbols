@@ -1,21 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Home from './components/Home/index';
+import Random from './components/Search/index';
+import DBSearch from './components/DBSearch/index';
+import Results from './components/Results/index';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+const Stack = createStackNavigator();
+
+export default class App extends Component {
+	render() {
+		return (
+			<NavigationContainer>
+				<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
+					<Stack.Screen name="Home" component={Home}
+						options={{ headerTransparent: true }} />
+					<Stack.Screen name="Random" component={Random}
+						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
+					<Stack.Screen name="DBSearch" component={DBSearch} navigation={this.props.navigation}
+						options={{
+							headerTransparent: true, headerTintColor: '#EF6145'}}/>
+					<Stack.Screen name="Results" component={Results} navigation={this.props.navigation}
+						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
+				</Stack.Navigator>
+			</NavigationContainer>
+		)
+	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
