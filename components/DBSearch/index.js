@@ -3,6 +3,7 @@ import { View, TouchableOpacity, Text, FormValidationMessage, ImageBackground } 
 import React from 'react';
 import styles from './styles';
 import { Picker } from '@react-native-community/picker';
+import { API_URL } from "@env";
 
 class DBSearch extends React.Component {
 	state = {
@@ -17,13 +18,12 @@ class DBSearch extends React.Component {
 
 	onSubmit = async () => {
 		const { sign, degree } = this.state
-		await fetch(`https://zodiac-degrees.herokuapp.com/DBdegree`, {
+		await fetch(`${API_URL}/DBdegree`, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json',
-				'cache-control': 'no-cache',
-				'Access-Control-Allow-Origin': 'https://localhost:19006/'
+				'cache-control': 'no-cache'
 			},
 			body: JSON.stringify({
 				sign: sign,

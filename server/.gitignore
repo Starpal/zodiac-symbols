@@ -4,3 +4,4 @@ views/
 .env
 bin/zodiacDegrees.js
 .vscode/
+Procfile

@@ -3,6 +3,7 @@ import 'react-native-gesture-handler';
 import { View, Text, TouchableOpacity, ScrollView, Image, ImageBackground } from 'react-native';
 import styles from './styles';
 import util from '../../utils/util';
+import { API_URL } from "@env";
 
 export default class SearchScreen extends React.Component {
 	state = {
@@ -24,7 +25,7 @@ export default class SearchScreen extends React.Component {
 		myHeaders.append('Content-Type', 'application/json');
 		myHeaders.append('cache-control', 'no-cache');
 		myHeaders.append('Accept', 'application/json');
-		await fetch(`https://zodiac-degrees.herokuapp.com/degree`, {
+		await fetch(`${API_URL}/degree`, {
 			method: 'GET',
 			headers: myHeaders,
 		})
