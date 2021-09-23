@@ -8,7 +8,6 @@ import { API_URL } from "@env";
 class DBSearch extends React.Component {
 	state = {
 		error: null,
-		isLoaded: false,
 		sign: 'Aries',
 		degree: '1',
 		title: '',
@@ -32,24 +31,14 @@ class DBSearch extends React.Component {
 		})
 			.then((res) => res.json(res))
 			.then((data) => {
-				this.setState({
-					isLoaded: true,
+				this.props.navigation.navigate('Results', {
 					sign: data.sign,
 					degree: data.degree,
 					title: data.title,
 					keynote: data.keynote,
 					description: data.description
 				})
-			})
-			.then(() => {
-				this.props.navigation.navigate('Results', {
-					sign: this.state.sign,
-					degree: this.state.degree,
-					title: this.state.title,
-					keynote: this.state.keynote,
-					description: this.state.description
-				})
-			})
+		})
 			.catch((err) => {
 				console.log('There has been a problem with your DBSearch operation: ' + err.message);
 				throw err;
@@ -62,7 +51,7 @@ class DBSearch extends React.Component {
 				<View style={styles.main}>
 					<Picker
 						selectedValue={this.state.sign}
-						onValueChange={(itemValue) => this.setState({ sign: itemValue })}
+						onValueChange={(signValue) => this.setState({ sign: signValue })}
 						style={styles.picker} itemStyle={styles.signPickerItem}>
 						<Picker.Item label="Aries" value="Aries" />
 						<Picker.Item label="Taurus" value="Taurus" />
@@ -80,7 +69,7 @@ class DBSearch extends React.Component {
 					<Picker
 						mode='dropdown'
 						selectedValue={this.state.degree}
-						onValueChange={(itemValue) => this.setState({ degree: itemValue })}
+						onValueChange={(degreeValue) => this.setState({ degree: degreeValue })}
 						style={styles.picker} itemStyle={styles.degreePickerItem}>
 						<Picker.Item label="01°" value="1" />
 						<Picker.Item label="02°" value="2" />
