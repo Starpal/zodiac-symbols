@@ -49,4 +49,16 @@ const SKYES = [
 	// require('../static/images/sky49.jpeg'),
 	require('../static/images/sky50.jpeg'),
 ];
-export {SKYES};
+const PULSE = {
+	0: {
+		scale: 1,
+	},
+	0.5: {
+		scale: 1.1
+	},
+	1: {
+		scale: 1
+	}
+}
+	
+export {SKYES, PULSE};

@@ -4,6 +4,8 @@ import { View, Text, TouchableOpacity, ScrollView, Image, ImageBackground } from
 import styles from './styles';
 import util from '../../utils/util';
 import { API_URL } from "@env";
+import * as Animatable from 'react-native-animatable';
+import { PULSE } from '../../utils/costants';
 
 export default class SearchScreen extends React.Component {
 	state = {
@@ -68,7 +70,13 @@ export default class SearchScreen extends React.Component {
 			return (
 				<ImageBackground source={require('../../static/images/blackHole.jpeg')} style={styles.loadingPageImage}>
 					<View style={styles.main}>
-						<Text style={styles.loadingText}>loading...</Text>
+						<Animatable.Text
+							animation={PULSE}
+							easing="ease-out"
+							iterationCount="infinite"
+							style={styles.loadingText}>
+								Loading...
+						</Animatable.Text>
 					</View>
 				</ImageBackground>)
 		} else {

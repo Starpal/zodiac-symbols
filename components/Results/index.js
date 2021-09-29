@@ -10,6 +10,8 @@ import {
 import styles from "../Search/styles";
 import util from "../../utils/util";
 import { API_URL } from "@env";
+import * as Animatable from 'react-native-animatable';
+import { PULSE } from '../../utils/costants';
 
 export default function ResultsScreen({ route, navigation }) {
   /* Get param from DBSearch navigation */
@@ -77,7 +79,13 @@ export default function ResultsScreen({ route, navigation }) {
 	  ) : (
 		<ImageBackground source={require("../../static/images/blackHolervt.jpeg")} style={styles.loadingPageImage}>
 		  <View style={styles.main}>
-			<Text style={styles.loadingText}>loading...</Text>
+		  	<Animatable.Text
+				animation={PULSE}
+				easing="ease-out"
+				iterationCount="infinite"
+				style={styles.loadingText}>
+					Loading...
+			</Animatable.Text>
 		  </View>
 		</ImageBackground>
 	  )}
