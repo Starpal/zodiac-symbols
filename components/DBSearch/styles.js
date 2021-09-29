@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 170,
 			},
 			android: {
-				marginTop: 200,
+				marginTop: 240,
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
 				backgroundColor: 'rgba(255, 255, 255, 0.25)',
 				width: 145,
 				color: '#FAFBFE',
-				marginTop: 20
+				marginTop: 25
 			}
 		})
 	},
@@ -59,16 +59,14 @@ const styles = StyleSheet.create({
 		})
 	},
 	buttonSubmit: {
-		marginTop: 100,
 		backgroundColor: "rgba(220,220,180, 0.20)",
 		height: 70,
 		borderColor: 'transparent',
 		alignItems: "center",
 		...Platform.select({
 			android: {
-				marginTop: 77,
+				marginTop: 87,
 				height: 73,
-				marginTop: 110
 			}
 		})
 	},
@@ -82,9 +80,9 @@ const styles = StyleSheet.create({
 				paddingTop: 1
 			},
 			android: {
-				paddingTop: 4,
+				fontFamily: 'sans-serif',
 				fontSize: 53,
-				fontFamily: 'Lato-BoldItalic',
+				fontStyle: 'italic',
 				color: "rgba(0,0,0, 0.5)"
 			}
 		})

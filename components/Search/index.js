@@ -17,7 +17,7 @@ export default class SearchScreen extends React.Component {
 	};
 
 	componentDidMount = () => {
-		this.getRandomDegree()
+		this.getRandomDegree();
 	};
 
 	getRandomDegree = async () => {
@@ -62,7 +62,8 @@ export default class SearchScreen extends React.Component {
 	};
 
 	render() {
-		const { isLoaded } = this.state;
+		const { isLoaded, sign, degree, title, keynote, description } = this.state;
+
 		if (!isLoaded) {
 			return (
 				<ImageBackground source={require('../../static/images/blackHole.jpeg')} style={styles.loadingPageImage}>
@@ -75,15 +76,15 @@ export default class SearchScreen extends React.Component {
 				<ImageBackground source={util.getRandomSky()} style={styles.homePageImage}>
 					<ScrollView contentContainerStyle={styles.scroll} scrollIndicatorInsets={{ right: 1 }}>
 						<View style={styles.main}>
-							<Text style={styles.sign}>{this.state.sign}</Text>
-							<Text style={styles.degree}>{this.state.degree + '°'}</Text>
-							<Text style={styles.title}>{this.state.title}</Text>
+							<Text style={styles.sign}>{sign}</Text>
+							<Text style={styles.degree}>{degree + '°'}</Text>
+							<Text style={styles.title}>{title}</Text>
 							<Text style={styles.keynote}>
-								{this.state.keynote}
+								{keynote}
 								{'\n'}
 							</Text>
 							<View style={styles.descriptionContainer}>
-								<Text style={styles.description}>{this.state.description}</Text>
+								<Text style={styles.description}>{description}</Text>
 							</View>
 							<TouchableOpacity style={styles.goBackButtonContainer}
 								onPress={() => this.props.navigation.navigate('Home')}>

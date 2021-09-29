@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-
 	main: {
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
 				fontSize: 55,
 			},
 			android: {
-				marginTop: 35,
+				marginTop: 75,
 				fontFamily: 'sans-serif-light',
 				fontSize: 57,
 				fontStyle: 'italic'
@@ -87,9 +86,8 @@ const styles = StyleSheet.create({
 				marginBottom: -30
 			},
 			android: {
-				fontFamily: 'Charmonman-Regular',
-				fontSize: 120,
-				marginVertical: -55,
+				fontSize: 90,
+				marginVertical: 35,
 				paddingLeft: 25
 			}
 		})
@@ -99,10 +97,10 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		justifyContent: 'center',
 		alignItems: 'center',
-		fontSize: 26,
+		fontSize: 30,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		paddingBottom: 40
+		paddingBottom: 35
 	},
 	keynote: {
 		color: 'black',
@@ -112,7 +110,6 @@ const styles = StyleSheet.create({
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
-		marginBottom: 10,
 		paddingLeft: 10,
 		paddingRight: 10,
 		...Platform.select({
@@ -135,7 +132,7 @@ const styles = StyleSheet.create({
 				backgroundColor: 'rgba(223, 231, 253, 0.4)'
 			},
 			android: {
-				backgroundColor: 'rgba(255, 255, 255, 0.4)',
+				backgroundColor: 'rgba(255, 255, 255, 0.5)',
 				paddingBottom: -15
 			}
 		})
@@ -156,8 +153,7 @@ const styles = StyleSheet.create({
 				fontWeight: '400'
 			},
 			android: {
-				fontFamily: 'Roboto-Light',
-				fontSize: 23,
+				fontSize: 24,
 				fontWeight: '800'
 			}
 		})
