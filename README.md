@@ -1,6 +1,6 @@
 # zodiac-symbols
 
-Full-Stack Mobile App build using Express.js, Node.js, MongoDB Atlas connected through Heroku and React-Native for both iOS and Android Frontend. Expo environment.
+Full-Stack Mobile App built using Express.js, Node.js, MongoDB Atlas connected through Heroku and React-Native for both iOS and Android Frontend. Expo environment.
 The DB is a collection of the 360' Zodiac Degrees interpretations in accordance with the Sabian Symbols. The App allows the following:
 
 1) To search in the DB for a specific Degree of the 360',
