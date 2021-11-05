@@ -15,16 +15,6 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-	scroll: {
-		paddingVertical: 20
-	},
-	loadingPageImage: {
-		position: 'absolute',
-		width: '100%',
-		height: '100%',
-		resizeMode: 'cover',
-		opacity: 0.8
-	},
 	loadingText: {
 		textAlign: 'center',
 		fontStyle: 'italic',
@@ -45,11 +35,10 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-
 	main: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginHorizontal: 15,
+		marginHorizontal: 10,
 		fontSize: 60,
 		textAlign: 'center',
 	},
@@ -87,9 +76,9 @@ const styles = StyleSheet.create({
 				marginBottom: -30
 			},
 			android: {
-				fontFamily: 'Charmonman-Regular',
-				fontSize: 120,
-				marginVertical: -55,
+				//fontFamily: 'Charmonman-Regular',
+				fontSize: 110,
+				marginVertical: 30,
 				paddingLeft: 25
 			}
 		})
@@ -108,13 +97,10 @@ const styles = StyleSheet.create({
 		color: 'black',
 		textAlign: 'justify',
 		fontSize: 23,
-		fontStyle: 'italic',
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
-		marginBottom: 10,
-		paddingLeft: 10,
-		paddingRight: 10,
+		paddingHorizontal: 10,
 		...Platform.select({
 			ios: {
 				fontWeight: 'bold'
@@ -131,11 +117,9 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 		...Platform.select({
 			ios: {
-				paddingBottom: 15,
-				backgroundColor: 'rgba(223, 231, 253, 0.4)'
+				paddingBottom: 15
 			},
 			android: {
-				backgroundColor: 'rgba(255, 255, 255, 0.4)',
 				paddingBottom: -15
 			}
 		})
@@ -179,7 +163,8 @@ const styles = StyleSheet.create({
 			android: {
 				color: 'black',
 				fontFamily: 'monospace',
-				fontWeight: 'bold'
+				fontWeight: 'bold',
+				width: 70
 			}
 		})
 	}

@@ -26,46 +26,42 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover'
 	},
 	button: {
-		marginTop: '9%',
-		borderColor: '#0DFFFF3F',
-		borderWidth: 1.5,
+		marginTop: '11%',
+		borderColor: 'rgba(250,251,254, 0.5)',
+		borderWidth: 1,
 		alignItems: "center",
 		borderRadius: 25,
-		padding: 11
+		padding: 11,
+		backgroundColor: 'rgba(0, 0, 0, 0.35)'
 	},
 	buttonText_search: {
 		color: '#FAFBFE',
 		textAlign: 'center',
 		textShadowColor: 'black',
-		textShadowOffset: { width: 7, height: 2 },
-		opacity: 0.7,
-		fontSize: 32,
+		textShadowOffset: { width: 5, height: 1 },
+		fontSize: 25,
+		opacity: 0.85,
 		...Platform.select({
 			ios: {
 				textShadowRadius: 5,
-				fontFamily: 'HelveticaNeue-Thin',
+				fontFamily: 'HelveticaNeue-Thin'
 			},
 			android: {
-				textShadowRadius: 15,
-				fontFamily: 'Lato-Light',
+				textShadowRadius: 15
 			}
 		})
 	},
 	buttonText_inspired: {
-		textShadowColor: 'black',
-		textShadowOffset: { width: 5, height: 2 },
+		textShadowColor: '#EF6145',
+		textShadowOffset: { width: -1, height: 1 },
 		textShadowRadius: 15,
 		color: '#FAFBFE',
 		textAlign: 'center',
-		opacity: 0.7,
-		fontSize: 35,
+		fontSize: 28,
+		opacity: 0.85,
 		...Platform.select({
 			ios: {
 				fontFamily: 'HelveticaNeue-ThinItalic',
-			},
-			android: {
-				fontFamily: 'Lato-LightItalic',
-				fontWeight: '400',
 			}
 		})
 	}
