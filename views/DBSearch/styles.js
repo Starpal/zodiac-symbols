@@ -59,11 +59,14 @@ const styles = StyleSheet.create({
 		})
 	},
 	buttonSubmit: {
-		backgroundColor: "rgba(220,220,180, 0.20)",
+		backgroundColor: "rgba(220,220,180, 0.25)",
 		height: 70,
 		borderColor: 'transparent',
 		alignItems: "center",
 		...Platform.select({
+			ios: {
+				marginTop: 80,
+			},
 			android: {
 				marginTop: 87,
 				height: 73,
@@ -80,10 +83,9 @@ const styles = StyleSheet.create({
 				paddingTop: 1
 			},
 			android: {
-				fontFamily: 'sans-serif',
-				fontSize: 53,
+				fontSize: 51,
 				fontStyle: 'italic',
-				color: "rgba(0,0,0, 0.5)"
+				fontWeight: 'bold'
 			}
 		})
 	}

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "react-native-gesture-handler";
 import {
   View,
@@ -6,32 +7,23 @@ import {
   FormValidationMessage,
   ImageBackground,
 } from "react-native";
-import React from "react";
 import styles from "./styles";
 import { Picker } from "@react-native-community/picker";
 
-export default class DBSearch extends React.Component {
-  state = {
-	sign: "Aries",
-	degree: "1",
-  };
+export default function DBSearch({ navigation }) {
+	const [sign, setSign] = useState("Aries");
+	const [degree, setDegree] = useState("1");
 
-  onSubmit = () => {
-	const { sign, degree } = this.state;
-	this.props.navigation.navigate("Results", {
-	  sign,
-	  degree,
-	});
-  };
+	const onSubmit = () => {
+		navigation.navigate("Results", {
+			sign,
+			degree});
+	};
 
-  render() {
 	return (
-	  <ImageBackground source={require("../../static/images/search4.jpeg")} style={styles.homePageImage}>
+		<ImageBackground source={require("../../static/images/search4.jpeg")} style={styles.homePageImage}>
 		<View style={styles.main}>
-		  <Picker
-			style={styles.picker}
-			selectedValue={this.state.sign}
-			onValueChange={(signValue) => this.setState({ sign: signValue })}
+			<Picker style={styles.picker} selectedValue={sign} onValueChange={(signValue) => setSign(signValue)}
 			itemStyle={styles.signPickerItem}>
 				<Picker.Item label="Aries" value="Aries" />
 				<Picker.Item label="Taurus" value="Taurus" />
@@ -45,12 +37,10 @@ export default class DBSearch extends React.Component {
 				<Picker.Item label="Capricorn" value="Capricorn" />
 				<Picker.Item label="Aquarius" value="Aquarius" />
 				<Picker.Item label="Pisces" value="Pisces" />
-		  </Picker>
-		  <Picker mode="modal" 
-			style={styles.picker}
-			selectedValue={this.state.degree}
-			onValueChange={(degreeValue) => this.setState({ degree: degreeValue })}
-			itemStyle={styles.degreePickerItem} >
+			</Picker>
+			<Picker mode="modal" style={styles.picker} selectedValue={degree}
+			onValueChange={(degreeValue) => setDegree(degreeValue)}
+			itemStyle={styles.degreePickerItem}>
 				<Picker.Item label="01°" value="1" />
 				<Picker.Item label="02°" value="2" />
 				<Picker.Item label="03°" value="3" />
@@ -81,12 +71,13 @@ export default class DBSearch extends React.Component {
 				<Picker.Item label="28°" value="28" />
 				<Picker.Item label="29°" value="29" />
 				<Picker.Item label="30°" value="30" />
-		  </Picker>
+			</Picker>
 		</View>
-		<TouchableOpacity onPress={this.onSubmit} style={styles.buttonSubmit}>
-		  <Text style={styles.buttonSubmitText}>Submit</Text>
+		<TouchableOpacity onPress={onSubmit} style={styles.buttonSubmit}>
+			<Text style={styles.buttonSubmitText}>
+				Submit
+			</Text>
 		</TouchableOpacity>
-	  </ImageBackground>
-	);
-  }
+	</ImageBackground>
+  );
 }

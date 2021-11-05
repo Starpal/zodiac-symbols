@@ -61,4 +61,18 @@ const PULSE = {
 	}
 }
 	
-export {SKYES, PULSE};
+/*
+** Hide Navigation Header onScroll
+*/
+const OPTIONS = {
+	navigationOptions: {
+		headerStyle: {
+			height: 70,
+			elevation: 0, // remove shadow on Android
+			shadowOpacity: 0, // remove shadow on iOS
+			borderBottomWidth: 0 // Just in case.
+		}
+	}
+}
+
+export {SKYES, PULSE, OPTIONS};

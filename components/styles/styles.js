@@ -15,16 +15,6 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-	scroll: {
-		paddingVertical: 20
-	},
-	loadingPageImage: {
-		position: 'absolute',
-		width: '100%',
-		height: '100%',
-		resizeMode: 'cover',
-		opacity: 0.8
-	},
 	loadingText: {
 		textAlign: 'center',
 		fontStyle: 'italic',
@@ -48,7 +38,7 @@ const styles = StyleSheet.create({
 	main: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginHorizontal: 15,
+		marginHorizontal: 10,
 		fontSize: 60,
 		textAlign: 'center',
 	},
@@ -65,7 +55,7 @@ const styles = StyleSheet.create({
 				fontSize: 55,
 			},
 			android: {
-				marginTop: 75,
+				marginTop: 35,
 				fontFamily: 'sans-serif-light',
 				fontSize: 57,
 				fontStyle: 'italic'
@@ -86,8 +76,9 @@ const styles = StyleSheet.create({
 				marginBottom: -30
 			},
 			android: {
-				fontSize: 90,
-				marginVertical: 35,
+				//fontFamily: 'Charmonman-Regular',
+				fontSize: 120,
+				//marginVertical: -55,
 				paddingLeft: 25
 			}
 		})
@@ -97,16 +88,15 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		justifyContent: 'center',
 		alignItems: 'center',
-		fontSize: 30,
+		fontSize: 26,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		paddingBottom: 35
+		paddingBottom: 40
 	},
 	keynote: {
 		color: 'black',
 		textAlign: 'justify',
 		fontSize: 23,
-		fontStyle: 'italic',
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
@@ -128,11 +118,9 @@ const styles = StyleSheet.create({
 		borderRadius: 5,
 		...Platform.select({
 			ios: {
-				paddingBottom: 15,
-				backgroundColor: 'rgba(223, 231, 253, 0.4)'
+				paddingBottom: 15
 			},
 			android: {
-				backgroundColor: 'rgba(255, 255, 255, 0.5)',
 				paddingBottom: -15
 			}
 		})
@@ -153,7 +141,8 @@ const styles = StyleSheet.create({
 				fontWeight: '400'
 			},
 			android: {
-				fontSize: 24,
+				fontFamily: 'Roboto-Light',
+				fontSize: 23,
 				fontWeight: '800'
 			}
 		})
@@ -175,7 +164,8 @@ const styles = StyleSheet.create({
 			android: {
 				color: 'black',
 				fontFamily: 'monospace',
-				fontWeight: 'bold'
+				fontWeight: 'bold',
+				width: 70
 			}
 		})
 	}

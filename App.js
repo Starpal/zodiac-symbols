@@ -1,15 +1,29 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Home from './components/Home/index';
-import Random from './components/Search/index';
-import DBSearch from './components/DBSearch/index';
-import Results from './components/Results/index';
+import Home from './views/Home/index';
+import Random from './views/Search/index';
+import DBSearch from './views/DBSearch/index';
+import Results from './views/Results/index';
+import { Lato_400Regular, Lato_400Regular_Italic } from "@expo-google-fonts/lato";
+import { Charmonman_400Regular } from "@expo-google-fonts/charmonman";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 
 const Stack = createStackNavigator();
 
-export default class App extends Component {
-	render() {
+export default function App({ navigation }) {
+
+	let [fontsLoaded] = useFonts({
+		Lato_400Regular,
+		Lato_400Regular_Italic,
+		Charmonman_400Regular
+  });
+
+  if (!fontsLoaded) {
+	return <AppLoading />;
+	}
+	
 		return (
 			<NavigationContainer>
 				<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
@@ -17,13 +31,11 @@ export default class App extends Component {
 						options={{ headerTransparent: true }} />
 					<Stack.Screen name="Random" component={Random}
 						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
-					<Stack.Screen name="DBSearch" component={DBSearch} navigation={this.props.navigation}
-						options={{
-							headerTransparent: true, headerTintColor: '#EF6145'}}/>
-					<Stack.Screen name="Results" component={Results} navigation={this.props.navigation}
+					<Stack.Screen name="DBSearch" component={DBSearch} navigation={navigation}
+						options={{headerTransparent: true, headerTintColor: '#EF6145'}}/>
+					<Stack.Screen name="Results" component={Results} navigation={navigation}
 						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		)
 	}
-}
