@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
 			},
 			android: {
 				//fontFamily: 'Charmonman-Regular',
-				fontSize: 120,
-				//marginVertical: -55,
+				fontSize: 110,
+				marginVertical: 30,
 				paddingLeft: 25
 			}
 		})
@@ -100,8 +100,7 @@ const styles = StyleSheet.create({
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
-		paddingLeft: 10,
-		paddingRight: 10,
+		paddingHorizontal: 10,
 		...Platform.select({
 			ios: {
 				fontWeight: 'bold'

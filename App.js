@@ -6,7 +6,6 @@ import Random from './views/Search/index';
 import DBSearch from './views/DBSearch/index';
 import Results from './views/Results/index';
 import { Lato_400Regular, Lato_400Regular_Italic } from "@expo-google-fonts/lato";
-import { Charmonman_400Regular } from "@expo-google-fonts/charmonman";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
@@ -16,8 +15,7 @@ export default function App({ navigation }) {
 
 	let [fontsLoaded] = useFonts({
 		Lato_400Regular,
-		Lato_400Regular_Italic,
-		Charmonman_400Regular
+		Lato_400Regular_Italic
   });
 
   if (!fontsLoaded) {
