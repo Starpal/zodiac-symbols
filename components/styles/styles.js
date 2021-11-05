@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginHorizontal: 10,
 		fontSize: 60,
-		textAlign: 'center',
+		textAlign: 'center'
 	},
 	sign: {
 		fontWeight: 'bold',
@@ -76,9 +76,8 @@ const styles = StyleSheet.create({
 				marginBottom: -30
 			},
 			android: {
-				//fontFamily: 'Charmonman-Regular',
-				fontSize: 110,
-				marginVertical: 30,
+				fontSize: 120,
+				marginVertical: -25,
 				paddingLeft: 25
 			}
 		})
@@ -140,14 +139,15 @@ const styles = StyleSheet.create({
 				fontWeight: '400'
 			},
 			android: {
-				fontFamily: 'Roboto-Light',
+				//fontFamily: 'Roboto-Light',
 				fontSize: 23,
 				fontWeight: '800'
 			}
 		})
 	},
 	goBackButtonContainer: {
-		marginTop: 40
+		marginTop: 40,
+		alignItems: 'center',
 	},
 	goBackButtonText: {
 		fontStyle: 'italic',

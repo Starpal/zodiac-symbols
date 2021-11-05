@@ -74,7 +74,7 @@ export default function DBSearch({ navigation }) {
 			</Picker>
 		</View>
 		<TouchableOpacity onPress={onSubmit} style={styles.buttonSubmit}>
-			<Text style={styles.buttonSubmitText}>
+			<Text style={[styles.buttonSubmitText, {fontFamily: Platform.OS == "android" && 'LatoBoldItalic'}]}>
 				Submit
 			</Text>
 		</TouchableOpacity>

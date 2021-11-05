@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
 	button: {
 		marginTop: '11%',
 		borderColor: 'rgba(250,251,254, 0.5)',
-		borderWidth: 1,
+		borderWidth: 1.2,
 		alignItems: "center",
 		borderRadius: 25,
 		padding: 11,
-		backgroundColor: 'rgba(0, 0, 0, 0.35)'
+		backgroundColor: 'rgba(0, 0, 0, 0.45)'
 	},
 	buttonText_search: {
 		color: '#FAFBFE',

@@ -1,26 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './views/Home/index';
 import Random from './views/Search/index';
 import DBSearch from './views/DBSearch/index';
 import Results from './views/Results/index';
-import { Lato_400Regular, Lato_400Regular_Italic } from "@expo-google-fonts/lato";
-import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import useFonts from './hooks/useFonts';
 
 const Stack = createStackNavigator();
 
 export default function App({ navigation }) {
 
-	let [fontsLoaded] = useFonts({
-		Lato_400Regular,
-		Lato_400Regular_Italic
-  });
+	const [IsReady, SetIsReady] = useState(false);
 
-  if (!fontsLoaded) {
-	return <AppLoading />;
-	}
+  const LoadFonts = async () => {
+    await useFonts();
+  };
+
+  if (!IsReady) {
+    return (
+      <AppLoading
+        startAsync={LoadFonts}
+        onFinish={() => SetIsReady(true)}
+        onError={() => {}}
+      />
+    );
+  }
 	
 		return (
 			<NavigationContainer>
