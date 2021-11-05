@@ -32,6 +32,7 @@ export default function DegreeDetails({ toggleSwitch, sign, degree, title, keyno
 				<Text style={styles.title}>{title}</Text>
 				<Text style={styles.keynote }>
 					{keynote}
+					{"\n"}
 				</Text>
 			<View style={[ styles.descriptionContainer, !toggleSwitch && {
 				backgroundColor:
