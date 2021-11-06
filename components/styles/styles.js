@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
 			},
 			android: {
 				fontSize: 120,
-				marginVertical: -25,
+				marginVertical: -30,
 				paddingLeft: 25
 			}
 		})
