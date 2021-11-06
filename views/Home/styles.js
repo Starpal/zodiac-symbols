@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 		backgroundColor: 'rgba(0, 0, 0, 0.45)'
 	},
 	buttonText_search: {
-		color: '#FAFBFE',
+		color: 'rgba(250,251,254, 0.8)',
 		textAlign: 'center',
 		textShadowColor: 'black',
 		textShadowOffset: { width: 5, height: 1 },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 		textShadowColor: '#EF6145',
 		textShadowOffset: { width: -1, height: 1 },
 		textShadowRadius: 15,
-		color: '#FAFBFE',
+		color: 'rgba(250,251,254, 0.8)',
 		textAlign: 'center',
 		fontSize: 28,
 		opacity: 0.85,
