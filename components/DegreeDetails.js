@@ -43,7 +43,7 @@ export default function DegreeDetails({ toggleSwitch, sign, degree, title, keyno
 						backgroundColor:
 							Platform.OS == "ios"
 								? "rgba(223, 231, 253, 0.3)"
-								: "rgba(223, 231, 253, 0.4)",
+								: "rgba(223, 231, 253, 0.42)",
 						}]}>
 						<Text style={styles.description}>{description}</Text>
 					</View>

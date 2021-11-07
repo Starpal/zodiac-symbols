@@ -7,7 +7,7 @@ function HomeScreen({ navigation }) {
 
   return (
 	<ImageBackground
-	  source={require("../../static/images/MOON2.jpg")}
+	  source={require("../../static/images/MOON3.jpg")}
 	  style={styles.homePageImage}>
 	  <View style={styles.homeDiv}>
 		<TouchableOpacity style={[styles.button, { width: 220 }]} onPress={() => navigation.navigate("DBSearch")}>

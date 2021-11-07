@@ -23,7 +23,9 @@ export default function DBSearch({ navigation }) {
 	return (
 		<ImageBackground source={require("../../static/images/search4.jpeg")} style={styles.homePageImage}>
 		<View style={styles.main}>
-			<Picker style={styles.picker} selectedValue={sign} onValueChange={(signValue) => setSign(signValue)}
+			<Picker 
+			style={styles.picker} selectedValue={sign} 
+			onValueChange={(signValue) => setSign(signValue)}
 			itemStyle={styles.signPickerItem}>
 				<Picker.Item label="Aries" value="Aries" />
 				<Picker.Item label="Taurus" value="Taurus" />
@@ -38,7 +40,10 @@ export default function DBSearch({ navigation }) {
 				<Picker.Item label="Aquarius" value="Aquarius" />
 				<Picker.Item label="Pisces" value="Pisces" />
 			</Picker>
-			<Picker mode="modal" style={styles.picker} selectedValue={degree}
+			<Picker 
+			mode="modal" 
+			style={styles.picker} 
+			selectedValue={degree}
 			onValueChange={(degreeValue) => setDegree(degreeValue)}
 			itemStyle={styles.degreePickerItem}>
 				<Picker.Item label="01°" value="1" />
@@ -73,8 +78,11 @@ export default function DBSearch({ navigation }) {
 				<Picker.Item label="30°" value="30" />
 			</Picker>
 		</View>
-		<TouchableOpacity onPress={onSubmit} style={styles.buttonSubmit}>
-			<Text style={[styles.buttonSubmitText, {fontFamily: Platform.OS == "android" && 'LatoBoldItalic'}]}>
+		<TouchableOpacity 
+		onPress={onSubmit} 
+		style={styles.buttonSubmit}>
+			<Text style={[styles.buttonSubmitText, 
+				{fontFamily: Platform.OS == "android" && 'LatoBoldItalic'}]}>
 				Submit
 			</Text>
 		</TouchableOpacity>
