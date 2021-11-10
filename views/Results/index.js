@@ -9,7 +9,6 @@ import { getDegreeSearch } from '../../utils/API';
 export default function ResultsScreen({ route }) {
 	/* Get param from DBSearch navigation */
 	const { sign, degree } = route.params;
-
 	const [isLoaded, setIsLoaded] = useState(false)
 	const [searchDegree, setSearchDegree] = useState([]);
 
