@@ -28,6 +28,7 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.2.2",
     "react-native-screens": "~3.4.0",
+    "react-native-switch": "git+https://github.com/shahen94/react-native-switch.git",
     "react-native-web": "^0.17.1",
     "react-navigation-collapsible": "^6.2.0"
   },

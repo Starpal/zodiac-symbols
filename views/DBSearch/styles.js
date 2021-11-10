@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 170,
 			},
 			android: {
-				marginTop: 240,
+				marginTop: 250,
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
 				paddingTop: 1
 			},
 			android: {
-				fontSize: 51,
+				fontSize: 53,
 				fontStyle: 'italic',
 				fontWeight: 'bold'
 			}

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 		alignItems: "center",
 		borderRadius: 30,
 		padding: 11,
-		backgroundColor: 'rgba(0, 0, 0, 0.45)'
+		backgroundColor: 'rgba(0, 0, 0, 0.47)'
 	},
 	buttonText_search: {
 		color: 'rgba(250,251,254, 0.8)',

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import styles from "./styles/styles";
@@ -6,16 +6,50 @@ import { OPTIONS } from "../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
 import util from "../utils/util";
 import { Animated } from "react-native";
+import { Switch } from "react-native-switch";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export default function DegreeDetails({ toggleSwitch, sign, degree, title, keynote, description }) {
-
+export default function DegreeDetails({ sign, degree, title, keynote, description }) {
+	
 	const [randomSky, setRandomSky] = useState();
+	const [toggleSwitch, setToggleSwitch] = useState(false);
+	
 	const navigation = useNavigation();
 
 	useEffect(() => {
 		setRandomSky(util.getRandomSky())
 	}, [])
-	
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			headerRight: () => (
+				<View style={{ marginRight: 18 }}>
+					<Switch
+						activeText={''}
+						inActiveText={''}
+						barHeight={15}
+						circleSize={25}
+						circleBorderWidth={0}
+						switchWidthMultiplier={1}
+						backgroundActive={"#19a093"}
+						backgroundInactive={"#767577"}
+						circleActiveColor={"#66c0b7"}
+						circleInActiveColor={"#f4f3f4"}
+						switchRightPx={3}
+						switchLeftPx={3}
+						useNativeDriver={true}
+						renderInsideCircle={() => 
+							toggleSwitch === true ? 
+							<MaterialCommunityIcons name="weather-night" size={20} color="#404040"/>
+							: 
+							<MaterialCommunityIcons name="glasses" size={20} color="#404040"/>}
+						value={toggleSwitch}
+						onValueChange={(value) => setToggleSwitch(value)} />
+				</View>
+			)
+		})
+	}, [toggleSwitch]);
+
 	const {
 		onScroll,
 		containerPaddingTop,

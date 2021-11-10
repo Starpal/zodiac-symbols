@@ -12,34 +12,34 @@ const Stack = createStackNavigator();
 
 export default function App({ navigation }) {
 
-	const [IsReady, SetIsReady] = useState(false);
+	const [IsReady, SetIsReady] = useState(false)
 
-  const LoadFonts = async () => {
-    await useFonts();
-  };
+	const LoadFonts = async () => {
+    	await useFonts();
+  	};
 
-  if (!IsReady) {
-    return (
-      <AppLoading
-        startAsync={LoadFonts}
-        onFinish={() => SetIsReady(true)}
-        onError={() => {}}
-      />
-    );
-  }
+  	if (!IsReady) {
+    	return (
+     		<AppLoading
+        		startAsync={LoadFonts}
+        		onFinish={() => SetIsReady(true)}
+        		onError={() => {}}
+      		/>
+    	);
+  	}
 	
-		return (
-			<NavigationContainer>
-				<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
-					<Stack.Screen name="Home" component={Home}
-						options={{ headerTransparent: true }} />
-					<Stack.Screen name="Random" component={Random}
-						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
-					<Stack.Screen name="DBSearch" component={DBSearch} navigation={navigation}
-						options={{headerTransparent: true, headerTintColor: '#EF6145'}}/>
-					<Stack.Screen name="Results" component={Results} navigation={navigation}
-						options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
-				</Stack.Navigator>
-			</NavigationContainer>
-		)
-	}
+	return (
+		<NavigationContainer>
+			<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
+				<Stack.Screen name="Home" component={Home}
+					options={{ headerTransparent: true }} />
+				<Stack.Screen name="Random" component={Random}
+					options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
+				<Stack.Screen name="DBSearch" component={DBSearch} navigation={navigation}
+					options={{headerTransparent: true, headerTintColor: '#EF6145'}}/>
+				<Stack.Screen name="Results" component={Results} navigation={navigation}
+					options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	)
+}
