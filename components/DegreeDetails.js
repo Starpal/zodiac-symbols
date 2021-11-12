@@ -7,7 +7,7 @@ import { useCollapsibleHeader } from "react-navigation-collapsible";
 import util from "../utils/util";
 import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
 export default function DegreeDetails({ sign, degree, title, keynote, description }) {
 	
@@ -40,9 +40,8 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 						useNativeDriver={true}
 						renderInsideCircle={() => 
 							toggleSwitch === true ? 
-							<MaterialCommunityIcons name="weather-night" size={20} color="#404040"/>
-							: 
-							<MaterialCommunityIcons name="glasses" size={20} color="#404040"/>}
+							<Ionicons name="planet-outline" size={20} color="#404040"/>
+							: <MaterialCommunityIcons name="glasses" size={20} color="#404040"/>}
 						value={toggleSwitch}
 						onValueChange={(value) => setToggleSwitch(value)} />
 				</View>
