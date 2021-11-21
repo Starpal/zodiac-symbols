@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
-		paddingHorizontal: 10,
 		...Platform.select({
 			ios: {
 				fontWeight: 'bold'

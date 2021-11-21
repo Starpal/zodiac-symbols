@@ -2,12 +2,13 @@ import React from "react";
 import "react-native-gesture-handler";
 import { View, TouchableOpacity, Text, ImageBackground } from "react-native";
 import styles from "./styles";
+import homeBg from "../../static/images/MOON3.jpg"
 
 function HomeScreen({ navigation }) {
 
   return (
 	<ImageBackground
-	  source={require("../../static/images/MOON3.jpg")}
+	  source={homeBg}
 	  style={styles.homePageImage}>
 	  <View style={styles.homeDiv}>
 		<TouchableOpacity style={[styles.button, { width: 220 }]} onPress={() => navigation.navigate("DBSearch")}>

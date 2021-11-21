@@ -1,3 +1,18 @@
+const SIGNS = [
+	'Aries',
+	'Taurus',
+	'Gemini',
+	'Cancer',
+	'Leo',
+	'Virgo',
+	'Libra',
+	'Scorpio',
+	'Sagittarius',
+	'Capricorn',
+	'Aquarius',
+	'Pisces'
+];
+
 const SKYES = [
 	require('../static/images/sky1.jpeg'),
 	require('../static/images/sky2.jpeg'),
@@ -10,7 +25,6 @@ const SKYES = [
 	require('../static/images/sky9.jpeg'),
 	require('../static/images/sky10.jpeg'),
 	require('../static/images/sky11.jpeg'),
-	// require('../static/images/sky12.jpeg'),
 	require('../static/images/sky13.jpeg'),
 	require('../static/images/sky14.jpeg'),
 	require('../static/images/sky15.jpeg'),
@@ -27,7 +41,6 @@ const SKYES = [
 	require('../static/images/sky26.jpeg'),
 	require('../static/images/sky27.jpeg'),
 	require('../static/images/sky28.jpeg'),
-	require('../static/images/sky29.jpeg'),
 	require('../static/images/sky30.jpeg'),
 	require('../static/images/sky31.jpeg'),
 	require('../static/images/sky32.jpeg'),
@@ -38,7 +51,7 @@ const SKYES = [
 	require('../static/images/sky38.jpeg'),
 	require('../static/images/sky39.jpeg'),
 	require('../static/images/sky40.jpeg'),
-	require('../static/images/sky41.jpeg'),
+	require('../static/images/sky41.jpg'),
 	require('../static/images/sky42.jpeg'),
 	require('../static/images/sky43.jpeg'),
 	require('../static/images/sky44.jpeg'),
@@ -46,7 +59,6 @@ const SKYES = [
 	require('../static/images/sky46.jpg'),
 	require('../static/images/sky47.jpeg'),
 	require('../static/images/sky48.jpeg'),
-	// require('../static/images/sky49.jpeg'),
 	require('../static/images/sky50.jpeg'),
 ];
 
@@ -79,4 +91,4 @@ const OPTIONS = {
 	}
 }
 
-export {SKYES, PULSE, OPTIONS};
+export {SIGNS, SKYES, PULSE, OPTIONS};

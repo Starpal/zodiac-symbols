@@ -1,8 +1,6 @@
 node_modules/
 .expo/
 .expo-shared/
-@react-native-community/
-@react-navigation/
 static/
 npm-debug.*
 *.jks
@@ -13,6 +11,11 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-
+eas.json
+app.json
+index.js
+metro.config.js
+react-native.config.js
+android/
 # macOS
 .DS_Store

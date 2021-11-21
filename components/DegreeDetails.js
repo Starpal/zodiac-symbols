@@ -9,7 +9,7 @@ import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-export default function DegreeDetails({ sign, degree, title, keynote, description }) {
+export default function DegreeDetails({ id, sign, degree, title, keynote, description }) {
 	
 	const [randomSky, setRandomSky] = useState();
 	const [toggleSwitch, setToggleSwitch] = useState(false);
@@ -38,8 +38,7 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 						switchRightPx={3}
 						switchLeftPx={3}
 						useNativeDriver={true}
-						renderInsideCircle={() => 
-							toggleSwitch === true ? 
+						renderInsideCircle={() => toggleSwitch === true ? 
 							<Ionicons name="planet-outline" size={20} color="#404040"/>
 							: <MaterialCommunityIcons name="glasses" size={20} color="#404040"/>}
 						value={toggleSwitch}
@@ -58,6 +57,7 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
   	return (
 		<ImageBackground source={toggleSwitch ? null : randomSky} style={styles.homePageImage}>
 			<Animated.ScrollView
+				key={id}
 				onScroll={onScroll}
 				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
 				contentContainerStyle={{

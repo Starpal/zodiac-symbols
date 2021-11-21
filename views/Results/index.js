@@ -5,6 +5,7 @@ import styles from '../Search/styles';
 import Loading from '../../components/Loading';
 import DegreeDetails from '../../components/DegreeDetails';
 import { getDegreeSearch } from '../../utils/API';
+import blackHoleRevert from '../../static/images/blackHolervt.jpeg'
 
 export default function ResultsScreen({ route }) {
 	/* Get param from DBSearch navigation */
@@ -26,6 +27,7 @@ export default function ResultsScreen({ route }) {
 		<>
 			{isLoaded ? searchDegree.map((data) => 
 				<DegreeDetails
+					id={data._id}
 					sign={data.sign}
 					degree={data.degree}
 					title={data.title}
@@ -33,7 +35,7 @@ export default function ResultsScreen({ route }) {
 					description={data.description} />
 				) : (
 					<ImageBackground 
-						source={require('../../static/images/blackHolervt.jpeg')}
+						source={blackHoleRevert}
 						style={styles.loadingPageImage}>
 						<Loading />
 					</ImageBackground>
