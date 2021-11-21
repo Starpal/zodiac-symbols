@@ -24,7 +24,8 @@ export default function DBSearch({ navigation }) {
 		<ImageBackground source={require("../../static/images/search4.jpeg")} style={styles.homePageImage}>
 			<View style={styles.main}>
 				<Picker 
-					style={styles.picker} selectedValue={sign} 
+					style={styles.picker}
+					selectedValue={sign} 
 					onValueChange={(signValue) => setSign(signValue)}
 					itemStyle={styles.signPickerItem}>
 					<Picker.Item label="Aries" value="Aries" />

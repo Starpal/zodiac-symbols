@@ -5,6 +5,7 @@ import styles from './styles';
 import Loading from '../../components/Loading';
 import DegreeDetails from '../../components/DegreeDetails';
 import { getRandomDegree } from '../../utils/API';
+import blackHole from "../../static/images/blackHole.jpeg"
 
 export default function SearchScreen() {
 
@@ -21,8 +22,9 @@ export default function SearchScreen() {
 
 	return (
 		<>
-			{isLoaded ? randomDegree.map(data =>
-				<DegreeDetails key={data.id}
+			{isLoaded ? randomDegree.map((data) => 
+				<DegreeDetails 
+					id={data._id}
 					sign={data.sign}
 					degree={data.degree}
 					title={data.title}
@@ -30,11 +32,13 @@ export default function SearchScreen() {
 					description={data.description} />
 				) : (
 					<ImageBackground 
-						source={require('../../static/images/blackHole.jpeg')} 
+						source={blackHole} 
 						style={styles.loadingPageImage}>
 						<Loading />
 					</ImageBackground>
-				)}
+				)
+				
+			}
 		</>
 	)
 }
