@@ -36,7 +36,9 @@ export default function SearchScreen() {
 						style={styles.loadingPageImage}>
 						<Loading />
 					</ImageBackground>
-				)}
+				)
+				
+			}
 		</>
 	)
 }
