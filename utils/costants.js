@@ -27,7 +27,7 @@ const SKYES = [
 	require('../static/images/sky26.jpeg'),
 	require('../static/images/sky27.jpeg'),
 	require('../static/images/sky28.jpeg'),
-	require('../static/images/sky29.jpeg'),
+	// require('../static/images/sky29.jpeg'),
 	require('../static/images/sky30.jpeg'),
 	require('../static/images/sky31.jpeg'),
 	require('../static/images/sky32.jpeg'),
