@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
-import styles from "./styles/styles";
+import styles from "./styles";
 import { OPTIONS } from "../../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
 import util from "../../utils/util";
@@ -9,16 +9,9 @@ import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
-export default function DegreeDetails({ sign, degree, title, keynote, description }) {
+export default function DegreeDetails({ sign, degree, title, keynote, description, randomSky }) {
 	
-	const [randomSky, setRandomSky] = useState();
 	const [toggleSwitch, setToggleSwitch] = useState(false);
-	
-	const navigation = useNavigation();
-
-	useEffect(() => {
-		setRandomSky(util.getRandomSky())
-	}, [])
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -48,6 +41,9 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 		})
 	}, [toggleSwitch]);
 
+	const navigation = useNavigation();
+
+	/* Hiding navBar when scrolling down */
 	const {
 		onScroll,
 		containerPaddingTop,
@@ -55,7 +51,7 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 	} = useCollapsibleHeader(OPTIONS);
 
   	return (
-		<ImageBackground source={toggleSwitch ? null : randomSky} style={styles.homePageImage}>
+		<ImageBackground source={toggleSwitch ? null : randomSky } style={styles.homePageImage}>
 			<Animated.ScrollView
 				onScroll={onScroll}
 				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
@@ -65,9 +61,9 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 				}}>
 				<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
 					<Text style={styles.sign}>{sign}</Text>
-					<Text style={[styles.degree, {fontFamily: Platform.OS == "android" && 'Charmonman'}]}>{degree + "°"}</Text>
+					<Text style={styles.degree}>{degree + "°"}{'\t'}</Text>
 					<Text style={styles.title}>{title}</Text>
-					<Text style={styles.keynote }>
+					<Text style={styles.keynote}>
 						{keynote}
 						{"\n"}
 					</Text>
@@ -80,7 +76,9 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 						<Text style={styles.description}>{description}</Text>
 					</View>
 				</View>
-				<TouchableOpacity style={styles.goBackButtonContainer} onPress={() => navigation.navigate("Home")}>
+				<TouchableOpacity 
+					style={styles.goBackButtonContainer} 
+					onPress={() => navigation.navigate("Home")}>
 					<Text style={styles.goBackButtonText}>Home</Text>
 				</TouchableOpacity>
 			</Animated.ScrollView>

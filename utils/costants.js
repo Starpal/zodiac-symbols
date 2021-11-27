@@ -1,4 +1,5 @@
 const SIGNS = [
+	'Sign',
 	'Aries',
 	'Taurus',
 	'Gemini',
@@ -83,7 +84,7 @@ const PULSE = {
 const OPTIONS = {
 	navigationOptions: {
 		headerStyle: {
-			height: 70,
+			height: 80,
 			elevation: 0, // remove shadow on Android
 			shadowOpacity: 0, // remove shadow on iOS
 			borderBottomWidth: 0 // Just in case.

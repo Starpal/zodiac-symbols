@@ -12,11 +12,19 @@ const styles = StyleSheet.create({
 				marginTop: 170,
 			},
 			android: {
-				marginTop: 240,
+				marginTop: 250,
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
 				transform: [{ scaleX: 1.5 }, { scaleY: 1.6 }]
+			}
+		})
+	},
+	pickerContainer:{
+		...Platform.select({
+			android: {
+				borderRadius: 20,
+				overflow: 'hidden'
 			}
 		})
 	},
@@ -27,10 +35,9 @@ const styles = StyleSheet.create({
 				marginTop: 5,
 			},
 			android: {
-				backgroundColor: 'rgba(255, 255, 255, 0.25)',
+				backgroundColor: 'rgba(255, 255, 255, 0.20)',
 				width: 145,
-				color: '#FAFBFE',
-				marginTop: 25
+				color: '#FAFBFE'
 			}
 		})
 	},
@@ -40,9 +47,6 @@ const styles = StyleSheet.create({
 				fontFamily: 'PingFangHK-Regular',
 				fontSize: 45,
 				color: '#FAFBFE'
-			},
-			android: {
-				width: 100
 			}
 		})
 	},
@@ -52,40 +56,37 @@ const styles = StyleSheet.create({
 				fontFamily: 'HiraKakuProN-W3',
 				fontSize: 40,
 				color: '#FAFBFE'
-			},
-			android: {
-				width: 100
 			}
 		})
 	},
 	buttonSubmit: {
 		backgroundColor: "rgba(220,220,180, 0.25)",
-		height: 70,
 		borderColor: 'transparent',
 		alignItems: "center",
 		...Platform.select({
 			ios: {
+				height: 70,
 				marginTop: 80,
 			},
 			android: {
 				marginTop: 90,
-				height: 73,
+				height: 80
 			}
 		})
 	},
 	buttonSubmitText: {
-		fontSize: 55,
-		color: "rgba(0,0,0, 0.55)",
+		color: "rgba(0,0,0, 0.60)",
 		...Platform.select({
 			ios: {
+				fontSize: 55,
 				fontFamily: 'Optima-BoldItalic',
 				fontWeight: '900',
 				paddingTop: 1
 			},
 			android: {
-				fontSize: 53,
-				fontStyle: 'italic',
-				fontWeight: 'bold'
+				fontSize: 71,
+				fontFamily: 'Satisfy',
+				top: '-10%'
 			}
 		})
 	}

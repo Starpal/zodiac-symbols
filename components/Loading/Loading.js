@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { View, ImageBackground } from 'react-native';
-import styles from '../Loading/styles/styles';
+import styles from './styles';
 import * as Animatable from 'react-native-animatable';
 import { PULSE } from '../../utils/costants';
 import blackHole from "../../static/images/blackHole.jpeg"
@@ -21,8 +21,8 @@ export default function Loading({type}) {
 					animation={PULSE}
 					easing="ease-out"
 					iterationCount="infinite"
-					style={[styles.loadingText, {fontFamily: Platform.OS == "android" && 'Charmonman'}]}>
-					Loading...
+					style={styles.loadingText}>
+					loading...
 				</Animatable.Text>
 			</View>
 		</ImageBackground>

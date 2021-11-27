@@ -58,7 +58,8 @@ const styles = StyleSheet.create({
 			android: {
 				fontSize: 120,
 				marginVertical: -30,
-				paddingLeft: 25
+				paddingLeft: 25,
+				fontFamily: 'Charmonman'
 			}
 		})
 	},
@@ -79,6 +80,7 @@ const styles = StyleSheet.create({
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
+		paddingHorizontal: 2,
 		...Platform.select({
 			ios: {
 				fontWeight: 'bold'
@@ -118,7 +120,6 @@ const styles = StyleSheet.create({
 				fontWeight: '400'
 			},
 			android: {
-				//fontFamily: 'Roboto-Light',
 				fontSize: 23,
 				fontWeight: '800'
 			}
