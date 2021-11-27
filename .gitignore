@@ -13,10 +13,6 @@ npm-debug.*
 web-build/
 .env
 eas.json
-app.json
-index.js
-metro.config.js
-react-native.config.js
-android/
+
 # macOS
 .DS_Store
