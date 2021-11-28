@@ -1,7 +1,7 @@
 node_modules/
 .expo/
-
 .expo-shared/
+assets/
 static/
 npm-debug.*
 *.jks
@@ -13,6 +13,7 @@ npm-debug.*
 web-build/
 .env
 eas.json
-
+app.json
+package-lock.json
 # macOS
 .DS_Store

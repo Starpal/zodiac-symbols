@@ -1,36 +1,36 @@
 {
-  "expo": {
-    "name": "Zodiac Symbols",
-    "slug": "zodiac-symbols",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./static/images/appIcon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#000000"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.starpal.zodiacsymbols",
-      "buildNumber": "1.0.0"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./static/images/appIcon.png",
-        "backgroundColor": "#000000"
-      },
-      "package": "com.starpal.zodiacsymbols",
-      "versionCode": 1
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+	"expo": {
+		"name": "Zodiac Symbols",
+		"slug": "zodiac-symbols",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./static/images/appIcon.png",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#000000"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": [
+			"**/*"
+		],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.starpal.zodiacsymbols",
+			"buildNumber": "1.0.0"
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./static/images/appIcon.png",
+				"backgroundColor": "#000000"
+			},
+			"package": "com.starpal.zodiacsymbols",
+			"versionCode": 1
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		}
+	}
 }

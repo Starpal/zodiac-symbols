@@ -4,7 +4,6 @@ import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { OPTIONS } from "../../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
-import util from "../../utils/util";
 import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';

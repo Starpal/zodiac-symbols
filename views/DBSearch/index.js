@@ -53,7 +53,7 @@ export default function DBSearch({ navigation }) {
 					itemStyle={styles.degreePickerItem}>
 						<Picker.Item label={'Degree'}/>
 						{ thirtyDegrees.map((degree, id) =>
-						<Picker.Item key={id} label={degree + '°'} value={degree} />
+							<Picker.Item key={id} label={degree + '°'} value={degree} />
 						)}
 				</Picker>
 				</View>
