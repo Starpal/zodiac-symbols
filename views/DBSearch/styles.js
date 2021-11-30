@@ -59,6 +59,10 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
+	error: {
+		color: '#F53D2B',
+		fontStyle: 'italic'
+		},
 	buttonSubmit: {
 		backgroundColor: "rgba(220,220,180, 0.25)",
 		borderColor: 'transparent',
@@ -90,10 +94,6 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
-	error: {
-		color: '#F53D2B',
-		fontStyle: 'italic'
-	}
 })
 
 export default styles;
