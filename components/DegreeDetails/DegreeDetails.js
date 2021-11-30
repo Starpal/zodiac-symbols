@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
@@ -7,10 +7,16 @@ import { useCollapsibleHeader } from "react-navigation-collapsible";
 import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import util from "../../utils/util";
 
-export default function DegreeDetails({ sign, degree, title, keynote, description, randomSky }) {
+export default function DegreeDetails({ sign, degree, title, keynote, description }) {
 	
+	const [randomSky, setRandomSky] = useState();
 	const [toggleSwitch, setToggleSwitch] = useState(false);
+
+	useEffect(() => {
+		setRandomSky(util.getRandomSky())
+	}, [])
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -50,7 +56,7 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 	} = useCollapsibleHeader(OPTIONS);
 
   	return (
-		<ImageBackground source={toggleSwitch ? null : randomSky } style={styles.homePageImage}>
+		<ImageBackground source={!toggleSwitch && randomSky } style={styles.homePageImage}>
 			<Animated.ScrollView
 				onScroll={onScroll}
 				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}

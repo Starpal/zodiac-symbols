@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 			android: {
 				color: 'rgba(0, 0, 0, 0.65)',
 				marginTop: 320,
-				fontSize: 70,
+				fontSize: 60,
 				fontFamily: 'BirthstoneBmedium'
 			},
 			ios: {
