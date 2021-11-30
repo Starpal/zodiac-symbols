@@ -89,6 +89,10 @@ const styles = StyleSheet.create({
 				top: '-10%'
 			}
 		})
+	},
+	error: {
+		color: '#F53D2B',
+		fontStyle: 'italic'
 	}
 })
 

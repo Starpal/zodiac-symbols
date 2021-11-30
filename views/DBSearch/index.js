@@ -59,9 +59,9 @@ export default function DBSearch({ navigation }) {
 						)}
 				</Picker>
 				</View>
-				{showSignError && 
-					<Text style={{color: '#F53D2B', fontStyle: 'italic'}}>We need a sign..</Text>
-				}
+					{showSignError && 
+						<Text style={styles.error}>We need a sign..</Text>
+					}
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
 				<Picker 
 					mode="modal"
@@ -78,9 +78,9 @@ export default function DBSearch({ navigation }) {
 						)}
 				</Picker>
 				</View>
-				{showDegreeError && 
-					<Text style={{color: '#F53D2B', fontStyle: 'italic'}}>..missing degree</Text>
-				}
+					{showDegreeError && 
+						<Text style={styles.error}>..missing degree</Text>
+					}
 			</View>
 			<TouchableOpacity 
 				onPress={onSubmit} 
