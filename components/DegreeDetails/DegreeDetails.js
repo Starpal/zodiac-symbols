@@ -7,16 +7,12 @@ import { useCollapsibleHeader } from "react-navigation-collapsible";
 import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-import util from "../../utils/util";
 
-export default function DegreeDetails({ sign, degree, title, keynote, description }) {
+export default function DegreeDetails({ sign, degree, title, keynote, description, randomSky }) {
 	
-	const [randomSky, setRandomSky] = useState();
 	const [toggleSwitch, setToggleSwitch] = useState(false);
-
-	useEffect(() => {
-		setRandomSky(util.getRandomSky())
-	}, [])
+	
+	const navigation = useNavigation();
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -25,8 +21,8 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 					<Switch
 						activeText={''}
 						inActiveText={''}
-						barHeight={15}
-						circleSize={25}
+						barHeight={17}
+						circleSize={27}
 						circleBorderWidth={0}
 						switchWidthMultiplier={1}
 						backgroundActive={"#19a093"}
@@ -46,9 +42,8 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 		})
 	}, [toggleSwitch]);
 
-	const navigation = useNavigation();
-
 	/* Hiding navBar when scrolling down */
+
 	const {
 		onScroll,
 		containerPaddingTop,
@@ -56,17 +51,15 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 	} = useCollapsibleHeader(OPTIONS);
 
   	return (
-		<ImageBackground source={!toggleSwitch && randomSky } style={styles.homePageImage}>
+		<ImageBackground source={!toggleSwitch ? randomSky : null} style={styles.homePageImage}>
 			<Animated.ScrollView
 				onScroll={onScroll}
 				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-				contentContainerStyle={{
-				paddingVertical: 20,
-				paddingTop: containerPaddingTop
-				}}>
+				contentContainerStyle={{ paddingVertical: 20, paddingTop: containerPaddingTop,
+				}, toggleSwitch && { backgroundColor: "#ded9d6" }}>
 				<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
 					<Text style={styles.sign}>{sign}</Text>
-					<Text style={styles.degree}>{degree + "°"}{'\t'}</Text>
+					<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
 					<Text style={styles.title}>{title}</Text>
 					<Text style={styles.keynote}>
 						{keynote}
@@ -75,8 +68,8 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 					<View style={[ styles.descriptionContainer, !toggleSwitch && {
 						backgroundColor:
 							Platform.OS == "ios"
-								? "rgba(223, 231, 253, 0.3)"
-								: "rgba(223, 231, 253, 0.42)",
+								? "rgba(253, 251, 253, 0.2)"
+								: "rgba(223, 231, 253, 0.4)",
 						}]}>
 						<Text style={styles.description}>{description}</Text>
 					</View>

@@ -8,10 +8,10 @@ const styles = StyleSheet.create({
 		resizeMode: 'cover',
 		...Platform.select({
 			ios: {
-				opacity: 0.8
+				opacity: 0.83
 			},
 			android: {
-				opacity: 0.7
+				opacity: 0.73
 			}
 		})
 	},
@@ -20,22 +20,29 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		marginHorizontal: 10,
 		fontSize: 60,
-		textAlign: 'center'
+		textAlign: 'center',
+		paddingTop: 80,
+		...Platform.select({
+			ios: {
+				marginHorizontal: 15
+			}
+		})
 	},
 	sign: {
 		fontWeight: 'bold',
 		color: '#0D0D3E',
 		textAlign: 'center',
 		justifyContent: 'center',
-		marginBottom: -10,
 		...Platform.select({
 			ios: {
-				marginTop: 85,
+				marginTop: 40,
+				marginBottom: 30,
 				fontFamily: 'Optima-BoldItalic',
-				fontSize: 55,
+				fontSize: 65,
 			},
 			android: {
 				marginTop: 35,
+				marginBottom: -10,
 				fontFamily: 'sans-serif-light',
 				fontSize: 57,
 				fontStyle: 'italic'
@@ -48,22 +55,22 @@ const styles = StyleSheet.create({
 		fontSize: 46,
 		textAlign: 'center',
 		color: 'black',
+		marginVertical: -30,
 		...Platform.select({
 			ios: {
 				fontFamily: 'Zapfino',
 				fontSize: 70,
-				paddingRight: 13,
-				marginBottom: -30
+				paddingRight: 13
 			},
 			android: {
 				fontSize: 120,
-				marginVertical: -30,
 				paddingLeft: 25,
 				fontFamily: 'Charmonman'
 			}
 		})
 	},
 	title: {
+		width: '99%',
 		color: 'black',
 		textAlign: 'center',
 		justifyContent: 'center',
@@ -71,36 +78,36 @@ const styles = StyleSheet.create({
 		fontSize: 26,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		paddingBottom: 40
+		marginBottom: 35
 	},
 	keynote: {
+		width: '99%',
 		color: 'black',
 		textAlign: 'justify',
-		fontSize: 23,
 		textShadowColor: '#C1C1C1',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
-		paddingHorizontal: 2,
 		...Platform.select({
 			ios: {
+				fontSize: 26,
 				fontWeight: 'bold'
 			},
 			android: {
 				fontFamily: 'sans-serif-condensed',
 				fontWeight: 'bold',
-				fontSize: 27
+				fontSize: 27,
 			}
 		})
 	},
 	descriptionContainer: {
 		width: '100%',
-		borderRadius: 5,
+		borderRadius: 15,
 		...Platform.select({
 			ios: {
 				paddingBottom: 15
 			},
 			android: {
-				paddingBottom: -15
+				paddingBottom: 3
 			}
 		})
 	},
@@ -110,38 +117,36 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		textAlign: 'justify',
 		alignItems: 'center',
+		fontSize: 23,
 		lineHeight: 30,
 		color: 'black',
 		fontWeight: 'bold',
 		...Platform.select({
 			ios: {
 				fontFamily: 'Helvetica',
-				fontSize: 22,
 				fontWeight: '400'
 			},
 			android: {
-				fontSize: 23,
 				fontWeight: '800'
 			}
 		})
 	},
 	goBackButtonContainer: {
-		marginTop: 40,
+		marginVertical: 40,
 		alignItems: 'center',
 	},
 	goBackButtonText: {
-		fontStyle: 'italic',
+		color: 'black',
 		fontSize: 25,
 		textShadowColor: 'white',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
 		...Platform.select({
 			ios: {
-				fontFamily: 'Helvetica-Oblique',
-				color: 'black',
+				fontFamily: 'Helvetica-Oblique'
 			},
 			android: {
-				color: 'black',
+				fontStyle: 'italic',
 				fontFamily: 'monospace',
 				fontWeight: 'bold',
 				width: 70

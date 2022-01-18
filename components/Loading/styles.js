@@ -11,20 +11,21 @@ const styles = StyleSheet.create({
 	loadingText: {
 		textAlign: 'center',
 		paddingLeft: 20,
-		textShadowColor: 'rgba(0, 0, 0, 0.75)',
+		textShadowColor: 'rgba(255, 255, 255, 0.9)',
 		textShadowOffset: { width: -1, height: 1 },
 		textShadowRadius: 15,
 		...Platform.select({
 			android: {
-				color: 'rgba(0, 0, 0, 0.65)',
-				marginTop: 320,
-				fontSize: 60,
-				fontFamily: 'BirthstoneBmedium'
+				fontSize: 46,
+				color: "rgba(0, 0, 0, 0.75)",
+				marginTop: 340,
+				fontFamily: 'BirthstoneBregular'
 			},
 			ios: {
-				color: 'rgba(0, 0, 0, 0.8)',
-				marginTop: 435,
-				fontSize: 80
+				fontSize: 40,
+				color: 'rgba(0, 0, 0, 0.95)',
+				marginTop: 390,
+				fontFamily: 'Zapfino'
 			}
 		})
 	},
