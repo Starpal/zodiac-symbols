@@ -1,6 +1,4 @@
 node_modules/
-.expo-shared/
-static/
 npm-debug.*
 *.jks
 *.p8
@@ -10,9 +8,6 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-eas.json
-app.json
-package-lock.json
 # macOS
 .DS_Store
 
@@ -71,7 +66,6 @@ buck-out/
 /ios/Pods/
 
 # Expo
-.expo/
 web-build/
 dist/
 

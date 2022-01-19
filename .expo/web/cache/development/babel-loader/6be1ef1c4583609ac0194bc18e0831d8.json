@@ -1,0 +1,1 @@
+{"ast":null,"code":"export { Switch } from \"./Switch\";","map":{"version":3,"sources":["/Users/paola/Desktop/zodiac-symbols/node_modules/react-native-switch/lib/index.js"],"names":["Switch"],"mappings":"AAAA,SAASA,MAAT","sourcesContent":["export { Switch } from './Switch';\n"]},"metadata":{},"sourceType":"module"}
