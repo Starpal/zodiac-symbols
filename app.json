@@ -23,14 +23,14 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./static/images/appIcon.png",
+				"foregroundImage": "./assets/mandalaIcon.png",
 				"backgroundColor": "#000000"
 			},
 			"package": "com.starpal.zodiacsymbols",
 			"versionCode": 1
 		},
 		"web": {
-			"favicon": "./assets/favicon.png"
+			"favicon": "./assets/splashMandala.png"
 		}
 	}
 }
