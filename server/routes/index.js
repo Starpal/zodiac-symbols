@@ -16,7 +16,7 @@ router.get("/uploads", (req, res, next) => {
     })
     .catch((error) => {
       console.log(
-        "Error while getting the degree from the DB: ",
+        "Error while getting image from the DB: ",
         error.message
       );
       throw error;
