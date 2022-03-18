@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
