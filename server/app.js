@@ -33,7 +33,7 @@ app.set("view engine", "hbs");
 app.engine("hbs",
   hbs.engine({
     extname: "hbs",
-    defaultView: "main",
+    defaultView: "index",
     layoutsDir: path.join(__dirname, "views"),
   })
 );
