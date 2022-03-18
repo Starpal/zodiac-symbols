@@ -5,6 +5,7 @@ const uploadBgImage = require("../models/uploadBgImage");
 
 router.get('/', (req, res, next) => {
 	res.status(200).send('zodiac-symbols');
+});
 
 // GET random background image
 router.get("/uploads", (req, res, next) => {
