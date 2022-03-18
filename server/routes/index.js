@@ -3,8 +3,11 @@ var router = express.Router();
 const ZodiacSymbol = require("../models/zodiacSymbol");
 const uploadBgImage = require("../models/uploadBgImage");
 
+router.get('/', (req, res, next) => {
+	res.status(200).send('zodiac-symbols');
+
 // GET random background image
-router.get("/", (req, res, next) => {
+router.get("/uploads", (req, res, next) => {
   uploadBgImage.aggregate([{ $sample: { size: 1 } }])
     .then((response) => {
       //res.render("main", { images: response[0] });
