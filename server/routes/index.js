@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
 	res.status(200).send('zodiac-symbols');
 });
 
-// GET random background image
+/* GET random background image */
 router.get("/uploads", (req, res, next) => {
   uploadBgImage.aggregate([{ $sample: { size: 1 } }])
     .then((response) => {
