@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 160,
 			},
 			android: {
-				marginTop: 270,
+				marginTop: 250,
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			android: {
 				borderRadius: 20,
-				overflow: 'hidden'
+				overflow: 'hidden',
+				marginBottom: 10
 			}
 		})
 	},

@@ -21,20 +21,13 @@ export default function DBSearch({ navigation }) {
 	});
 
 	const onSubmit = () => {
-		if (sign === "Sign" && degree === "Degree") {
-			setSignError(true);
-			setDegreeError(true);
-		} else if (sign === "Sign") {
-			setSignError(true);
-		} else if (degree === "Degree") {
-			setDegreeError(true);
-		} else {
-		// By submitting the form, we navigate to 'Results' Screen, passing sign and degree params.
-			navigation.navigate("Results", {
-				sign,
-				degree
-			});
-		}
+		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
+				: sign === "Sign" ? setSignError(true) : degree === "Degree" ? setDegreeError(true) :
+		// If no error we submit the form, navigating to 'Results' Screen, passing 'sign' and 'degree' params.
+					navigation.navigate("Results", {
+						sign,
+						degree
+					});
 	};
 
 	// Generate an array of 30° & add 'Degree' placeholder at the beginning.
