@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './views/Home/index';
-import Random from './views/Search/index';
+import Random from './views/Random/index';
 import DBSearch from './views/DBSearch/index';
 import Results from './views/Results/index';
 import AppLoading from "expo-app-loading";
@@ -23,7 +23,7 @@ export default function App({ navigation }) {
      		<AppLoading
         		startAsync={LoadFonts}
         		onFinish={() => SetIsReady(true)}
-        		onError={() => {}}
+        		onError={console.warn}
       		/>
     	);
   	}

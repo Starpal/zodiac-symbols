@@ -9,7 +9,7 @@ import blackHoleRvt from "../../static/images/blackHolervt.jpeg";
 
 export default function ResultsScreen({ route }) {
 	/* Get param from DBSearch navigation */
-	const { sign, degree } = route.params;
+	const { sign, degree, apiImg } = route.params;
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [searchDegree, setSearchDegree] = useState([]);
 
@@ -34,6 +34,7 @@ export default function ResultsScreen({ route }) {
 						title={data.title}
 						keynote={data.keynote}
 						description={data.description}
+						apiImg={apiImg}
 					/>
 				))
 			) : (

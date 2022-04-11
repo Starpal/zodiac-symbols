@@ -4,24 +4,30 @@ import { ImageBackground } from 'react-native';
 import Loading from "../../components/Loading/Loading";
 import styles from '../../components/Loading/styles';
 import DegreeDetails from "../../components/DegreeDetails/DegreeDetails";
-import { getRandomDegree } from "../../utils/API";
+import { getRandomDegree, getRandomSky } from "../../utils/API";
 import blackHole from "../../static/images/blackHole.jpeg";
-import util from "../../utils/util";
 
 export default function SearchScreen() {
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [randomSky, setRandomSky] = useState();
 	const [randomDegree, setRandomDegree] = useState([]);
+
+	const [apiImg, setApiImg] = useState([]);
+
+	useEffect(() => {
+		getRandomSky()
+			.then((Img) => {
+				setApiImg(Img);
+			});
+	}, []);
 
 	useEffect(() => {
 		getRandomDegree()
 			.then((random) => {
-				setRandomSky(util.getRandomSky())
 				setRandomDegree(random);
 				setIsLoaded(true);
-		});
-	}, []);
-
+			});
+		}, []);
+		
 	return (
 		<>
 			{isLoaded ? (randomDegree.map((data) => (
@@ -32,7 +38,7 @@ export default function SearchScreen() {
 					title={data.title}
 					keynote={data.keynote}
 					description={data.description} 
-					randomSky={randomSky} /> ))
+					apiImg={apiImg}/> ))
 			) : (
 				<ImageBackground source={blackHole} style={styles.loadingPageImage}>
 					<Loading />

@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
 import styles from "./styles";
@@ -7,23 +7,10 @@ import { useCollapsibleHeader } from "react-navigation-collapsible";
 import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
-import { getRandomSky } from "../../utils/API";
 
-export default function DegreeDetails({ sign, degree, title, keynote, description }) {
+export default function DegreeDetails({ apiImg, sign, degree, title, keynote, description }) {
 	
 	const [toggleSwitch, setToggleSwitch] = useState(false);
-	const [image64, setimage64] = useState();
-	const [contentType, setContentType] = useState();
-
-	useEffect(() => {
-		getRandomSky()
-			.then((bckgrdImg) => {
-			//console.log(bckgrdImg.imageBase64)
-			setimage64(bckgrdImg.imageBase64)
-			setContentType(bckgrdImg.contentType)
-			});
-	}, []);
-
 
 	const navigation = useNavigation();
 
@@ -64,13 +51,13 @@ export default function DegreeDetails({ sign, degree, title, keynote, descriptio
 	} = useCollapsibleHeader(OPTIONS);
 
   	return (
-		<ImageBackground source={!toggleSwitch ? {uri: `data:${contentType};base64,${image64}`} : null}
+		<ImageBackground source={!toggleSwitch ? {uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
 			style={styles.homePageImage}>
 			<Animated.ScrollView
 				onScroll={onScroll}
 				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-				contentContainerStyle={{ paddingVertical: 20, paddingTop: containerPaddingTop,
-				}, toggleSwitch && { backgroundColor: "#ded9d6" }}>
+				contentContainerStyle={toggleSwitch && { backgroundColor: "#ded9d6" }
+										&& { paddingVertical: 20, paddingTop: containerPaddingTop }}>
 				<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
 					<Text style={styles.sign}>{sign}</Text>
 					<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>

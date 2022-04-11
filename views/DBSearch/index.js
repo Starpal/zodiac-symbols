@@ -4,6 +4,7 @@ import { View, TouchableOpacity, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
 import { SIGNS } from "../../utils/costants";
+import { getRandomSky } from "../../utils/API";
 import nightSky from "../../static/images/search4.jpeg";
 import * as Animatable from "react-native-animatable";
 import { PULSE } from "../../utils/costants";
@@ -14,6 +15,14 @@ export default function DBSearch({ navigation }) {
 	const [degree, setDegree] = useState("Degree");
 	const [showSignError, setSignError] = useState(false);
 	const [showDegreeError, setDegreeError] = useState(false);
+	const [apiImg, setApiImg] = useState([]);
+
+	useEffect(() => {
+		getRandomSky()
+			.then((Img) => {
+				setApiImg(Img);
+			});
+	}, []);
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
@@ -22,12 +31,13 @@ export default function DBSearch({ navigation }) {
 
 	const onSubmit = () => {
 		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
-				: sign === "Sign" ? setSignError(true) : degree === "Degree" ? setDegreeError(true) :
-		// If no error we submit the form, navigating to 'Results' Screen, passing 'sign' and 'degree' params.
-					navigation.navigate("Results", {
-						sign,
-						degree
-					});
+					: sign === "Sign" ? setSignError(true) 
+						: degree === "Degree" ? setDegreeError(true) 
+							: navigation.navigate("Results", {
+									sign,
+									degree,
+									apiImg
+								});
 	};
 
 	// Generate an array of 30° & add 'Degree' placeholder at the beginning.
