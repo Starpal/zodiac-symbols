@@ -33,7 +33,7 @@ export default function App({ navigation }) {
 				<Stack.Screen name="Home" component={Home}
 					options={{ headerTransparent: true }} />
 				<Stack.Screen name="DBSearch" component={DBSearch} navigation={navigation}
-					options={{headerTransparent: true, headerTintColor: '#EF6145'}}/>
+					options={{headerTransparent: true, headerTintColor: 'rgb(222, 101, 111)'}}/>
 				<Stack.Screen name="Results" component={Results} navigation={navigation}
 					options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)' }}/>
 			</Stack.Navigator>
