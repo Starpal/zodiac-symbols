@@ -18,7 +18,7 @@ function HomeScreen({ navigation }) {
 				</Text>
 			</TouchableOpacity>
 			<TouchableOpacity style={[styles.button, { width: 235 }]} 
-				onPress={() => navigation.navigate("Random")}>
+				onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
 				<Text style={styles.buttonText_inspired}>
 					..get inspired!
 				</Text>

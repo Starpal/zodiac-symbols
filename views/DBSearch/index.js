@@ -17,12 +17,12 @@ export default function DBSearch({ navigation }) {
 	const [showDegreeError, setDegreeError] = useState(false);
 	const [apiImg, setApiImg] = useState([]);
 
-	useEffect(() => {
-		getRandomSky()
-			.then((Img) => {
-				setApiImg(Img);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	getRandomSky()
+	// 		.then((Img) => {
+	// 			setApiImg(Img);
+	// 		});
+	// }, []);
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
@@ -34,9 +34,10 @@ export default function DBSearch({ navigation }) {
 					: sign === "Sign" ? setSignError(true) 
 						: degree === "Degree" ? setDegreeError(true) 
 							: navigation.navigate("Results", {
+									screen: "DBSearch",
 									sign,
 									degree,
-									apiImg
+								//	apiImg
 								});
 	};
 
