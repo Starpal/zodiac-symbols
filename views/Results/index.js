@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "react-native-gesture-handler";
-import { ImageBackground } from "react-native";
 import Loading from "../../components/Loading/Loading";
-import styles from "../../components/Loading/styles";
 import DegreeDetails from "../../components/DegreeDetails/DegreeDetails";
 import { getDegreeSearch, getRandomDegree, getRandomSky } from "../../utils/API";
-import blackHoleRvt from "../../static/images/blackHolervt.jpeg";
 
 export default function ResultsScreen({ route }) {
 	/* Get param from DBSearch navigation */
@@ -24,17 +21,17 @@ export default function ResultsScreen({ route }) {
 	useEffect(() => {
 		const searchDegreeArray = [];
 		screen === 'DBSearch' ?
-		getDegreeSearch(sign, degree)
-			.then((search) => {
-				searchDegreeArray.push(search);
-				setGetDegree(searchDegreeArray);
-				setIsLoaded(true);
-			}) 
+			getDegreeSearch(sign, degree)
+				.then((search) => {
+					searchDegreeArray.push(search);
+					setGetDegree(searchDegreeArray);
+					setIsLoaded(true);
+				})
 			: getRandomDegree()
 				.then((random) => {
 					setGetDegree(random);
 					setIsLoaded(true);
-		});
+			});
 	}, []);
 
 	return (
@@ -52,9 +49,8 @@ export default function ResultsScreen({ route }) {
 					/>
 				))
 			) : (
-				<ImageBackground source={blackHoleRvt} style={styles.loadingPageImage}>
-					<Loading />
-				</ImageBackground>
+				screen === "DBSearch" ? 
+					<Loading type="DBSearch"/> : <Loading type="random"/>
 			)}
 		</>
 	);

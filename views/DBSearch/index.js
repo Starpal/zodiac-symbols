@@ -4,7 +4,6 @@ import { View, TouchableOpacity, Text, ImageBackground } from "react-native";
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
 import { SIGNS } from "../../utils/costants";
-import { getRandomSky } from "../../utils/API";
 import nightSky from "../../static/images/search.jpeg";
 import * as Animatable from "react-native-animatable";
 import { PULSE } from "../../utils/costants";
@@ -15,14 +14,6 @@ export default function DBSearch({ navigation }) {
 	const [degree, setDegree] = useState("Degree");
 	const [showSignError, setSignError] = useState(false);
 	const [showDegreeError, setDegreeError] = useState(false);
-	const [apiImg, setApiImg] = useState([]);
-
-	// useEffect(() => {
-	// 	getRandomSky()
-	// 		.then((Img) => {
-	// 			setApiImg(Img);
-	// 		});
-	// }, []);
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
@@ -36,8 +27,7 @@ export default function DBSearch({ navigation }) {
 							: navigation.navigate("Results", {
 									screen: "DBSearch",
 									sign,
-									degree,
-								//	apiImg
+									degree
 								});
 	};
 
@@ -95,7 +85,6 @@ export default function DBSearch({ navigation }) {
 					</View>
 				)}
 			</View>
-		
 			<TouchableOpacity 
 				onPress={onSubmit} 
 				style={[styles.buttonSubmit, fieldsAreFilled ? {marginTop: 65}: {marginTop: 40}]}>
