@@ -4,7 +4,7 @@
 		"slug": "zodiac-symbols",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/mandalaIcon.png",
+		"icon": "./assets/appIconRainbow.png",
 		"splash": {
 			"image": "./assets/splashMandala.png",
 			"resizeMode": "contain",
@@ -23,7 +23,7 @@
 		},
 		"android": {
 			"adaptiveIcon": {
-				"foregroundImage": "./assets/mandalaIcon.png",
+				"foregroundImage": "./assets/appIconRainbow.png",
 				"backgroundColor": "#000000"
 			},
 			"package": "com.starpal.zodiacsymbols",

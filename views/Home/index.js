@@ -2,7 +2,7 @@ import React from 'react';
 import "react-native-gesture-handler";
 import { View, TouchableOpacity, Text, ImageBackground } from "react-native";
 import styles from "./styles";
-import homeBg from "../../static/images/MOON3.jpg"
+import homeBg from "../../static/images/MOON3.jpeg"
 
 function HomeScreen({ navigation }) {
 

@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
 				fontSize: 65,
 			},
 			android: {
-				marginTop: 35,
+				marginTop: 10,
 				marginBottom: -10,
 				fontFamily: 'sans-serif-light',
 				fontSize: 57,

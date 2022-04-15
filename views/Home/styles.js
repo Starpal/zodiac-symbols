@@ -60,7 +60,6 @@ const styles = StyleSheet.create({
 		textShadowRadius: 15,
 		color: 'rgba(250, 251, 254, 0.8)',
 		textAlign: 'center',
-		
 		opacity: 0.85,
 		...Platform.select({
 			ios: {

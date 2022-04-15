@@ -11,23 +11,22 @@ const styles = StyleSheet.create({
 	loadingText: {
 		textAlign: 'center',
 		paddingLeft: 20,
-		textShadowColor: 'rgba(0, 0, 0, 0.9)',
-		textShadowOffset: { width: 1, height: -2 },
-		textShadowRadius: 9,
+		textShadowColor: 'rgba(0, 0, 0, 0.75)',
+		textShadowOffset: { width: -1, height: 1 },
+		textShadowRadius: 15,
 		...Platform.select({
 			android: {
-				fontSize: 44,
-				color: "rgba(255, 255, 255, 0.50)",
-				marginTop: 375,
-				fontFamily: 'LatoItalic'
+				color: 'rgba(0, 0, 0, 0.65)',
+				marginTop: 320,
+				fontSize: 60,
+				fontFamily: 'BirthstoneBregular'
 			},
 			ios: {
-				fontSize: 40,
-				color: 'rgba(0, 0, 0, 0.95)',
-				marginTop: 390,
-				fontFamily: 'Zapfino'
+				color: 'rgba(0, 0, 0, 0.8)',
+				marginTop: 435,
+				fontSize: 80
 			}
 		})
-	},
+	}
 })
 export default styles;

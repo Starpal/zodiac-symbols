@@ -5,7 +5,7 @@ import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
 import { SIGNS } from "../../utils/costants";
 import { getRandomSky } from "../../utils/API";
-import nightSky from "../../static/images/search4.jpeg";
+import nightSky from "../../static/images/search.jpeg";
 import * as Animatable from "react-native-animatable";
 import { PULSE } from "../../utils/costants";
 import { Octicons } from "@expo/vector-icons";
