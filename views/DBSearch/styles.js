@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 160,
 			},
 			android: {
-				marginTop: 245,
+				marginTop: '65%',
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
