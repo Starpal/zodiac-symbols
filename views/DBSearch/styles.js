@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 160,
 			},
 			android: {
-				marginTop: '65%',
+				marginTop: '68%',
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -72,12 +72,16 @@ const styles = StyleSheet.create({
 			},
 			android: {
 				backgroundColor: "rgba(220,220,180, 0.2)",
-				bottom: 70
+				bottom: '7%'
 			}
 		})
 	},
 	buttonSubmitText: {
 		color: "rgba(0, 0, 0, 0.6)",
+		textShadowColor: "rgb(255, 251, 204)",
+		textShadowOffset: { width: -2, height: 1 },
+		textShadowRadius: 20,
+		textAlign: 'center',
 		...Platform.select({
 			ios: {
 				fontSize: 60,
@@ -97,6 +101,7 @@ const styles = StyleSheet.create({
 		textShadowColor: "rgb(255, 251, 204)",
 		textShadowOffset: { width: -2, height: 1 },
 		textShadowRadius: 20,
+		textAlign: 'center',
 		...Platform.select({
 			ios: {
 				fontSize: 60,

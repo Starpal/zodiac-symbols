@@ -7,30 +7,27 @@ const FadeInView = (props) => {
 	const fadeAnim = useRef(new Animated.Value(0)).current  // Initial value for opacity: 0
   
 	useEffect(() => {
-	  Animated.timing(
-		fadeAnim,
-		{
-		  toValue: 1,
-		  duration: 1500,
-		  useNativeDriver: true
-		}
-	  ).start();
+		Animated.timing(
+			fadeAnim,
+			{
+				toValue: 1,
+				duration: 1000,
+				useNativeDriver: true
+			}
+		).start();
 	}, [fadeAnim])
   
 	return (
-	  <Animated.View
-		style={{
-		  ...props.style,
-		  opacity: fadeAnim,
-		}}
-	  >
-		{props.children}
-	  </Animated.View>
+		<Animated.View
+			style={{
+				...props.style,
+				opacity: fadeAnim}}>
+			{props.children}
+		</Animated.View>
 	);
 }
 
 function HomeScreen({ navigation, homeBg }) {
-
   return (
 	<FadeInView>
 		<ImageBackground
