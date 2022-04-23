@@ -136,9 +136,9 @@ const styles = StyleSheet.create({
 		marginHorizontal: 100,
 		borderRadius: 30,
 		alignItems: "center",
-		textAlign: "center",
 		padding: 11,
-		backgroundColor: 'rgba(255, 255, 255, 0.25)',
+		backgroundColor: 'rgba(255, 255, 255, 0.6)',
+		elevation: 10
 	},
 	goBackButtonText: {
 		color: 'black',

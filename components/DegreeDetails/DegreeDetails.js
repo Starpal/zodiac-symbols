@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, ImageBackground, Text, TouchableOpacity, Animated } from "react-native";
 import styles from "./styles";
@@ -10,8 +10,13 @@ import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 export default function DegreeDetails({ apiImg, sign, degree, title, keynote, description }) {
 	
 	const [toggleSwitch, setToggleSwitch] = useState(false);
+	const [backgroundImg, setBackgroundImg] = useState()
 
 	const navigation = useNavigation();
+
+	useEffect(() => { 
+			setBackgroundImg(apiImg)
+	}, []);
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -55,36 +60,39 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 	}
 
   	return (
-		<ImageBackground source={!toggleSwitch ? {uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
-			style={styles.homePageImage}>
-			<Animated.ScrollView
-				onScroll={onScroll}
-				scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-				contentContainerStyle={toggleSwitch ? 
-					contentStyle : { backgroundColor: "#ded9d6"} && contentStyle }>
-				<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
-					<Text style={styles.sign}>{sign}</Text>
-					<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
-					<Text style={styles.title}>{title}</Text>
-					<Text style={styles.keynote}>
-						{keynote}
-						{"\n"}
-					</Text>
-					<View style={[ styles.descriptionContainer, !toggleSwitch && {
-						backgroundColor:
-							Platform.OS == "ios"
-								? "rgba(253, 251, 253, 0.2)"
-								: "rgba(223, 231, 253, 0.4)",
-						}]}>
-						<Text style={styles.description}>{description}</Text>
+		<>
+		{backgroundImg &&
+			<ImageBackground source={!toggleSwitch ? 
+				{uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
+				style={styles.homePageImage}>
+				<Animated.ScrollView
+					onScroll={onScroll}
+					scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
+					contentContainerStyle={toggleSwitch ? 
+						contentStyle : { backgroundColor: "#ded9d6"} && contentStyle }>
+					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
+						<Text style={styles.sign}>{sign}</Text>
+						<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
+						<Text style={styles.title}>{title}</Text>
+						<Text style={styles.keynote}>
+							{keynote}
+							{"\n"}
+						</Text>
+						<View style={[ styles.descriptionContainer, !toggleSwitch && {
+							backgroundColor:
+								Platform.OS == "ios"
+									? "rgba(253, 251, 253, 0.2)"
+									: "rgba(223, 231, 253, 0.4)",
+							}]}>
+							<Text style={styles.description}>{description}</Text>
+						</View>
 					</View>
-				</View>
-				<TouchableOpacity 
-					style={styles.goBackButtonContainer} 
-					onPress={() => navigation.navigate("Home")}>
-					<Text style={styles.goBackButtonText}>Home</Text>
-				</TouchableOpacity>
-			</Animated.ScrollView>
-		</ImageBackground>
-	);
+					<TouchableOpacity 
+						style={styles.goBackButtonContainer} 
+						onPress={() => navigation.navigate("Home")}>
+						<Text style={styles.goBackButtonText}>Home</Text>
+					</TouchableOpacity>
+				</Animated.ScrollView>
+			</ImageBackground>}
+		</>);
 }

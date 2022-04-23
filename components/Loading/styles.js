@@ -11,14 +11,14 @@ const styles = StyleSheet.create({
 	loadingText: {
 		textAlign: 'center',
 		paddingLeft: 20,
-		textShadowColor: 'rgba(0, 0, 0, 0.75)',
+		textShadowColor: 'rgba(255, 255, 255, 0.9)',
 		textShadowOffset: { width: -1, height: 1 },
-		textShadowRadius: 15,
+		textShadowRadius: 10,
 		...Platform.select({
 			android: {
-				color: 'rgba(0, 0, 0, 0.65)',
-				marginTop: 320,
-				fontSize: 60,
+				color: 'rgba(0, 0, 0, 0.7)',
+				marginTop: '94%',
+				fontSize: 55,
 				fontFamily: 'BirthstoneBregular'
 			},
 			ios: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import "react-native-gesture-handler";
 import { View, TouchableOpacity, Text, ImageBackground, Animated } from "react-native";
 import styles from "./styles";
@@ -11,7 +11,7 @@ const FadeInView = (props) => {
 			fadeAnim,
 			{
 				toValue: 1,
-				duration: 1000,
+				duration: 700,
 				useNativeDriver: true
 			}
 		).start();
@@ -28,27 +28,38 @@ const FadeInView = (props) => {
 }
 
 function HomeScreen({ navigation, homeBg }) {
+
+	const [backgroundImg, setBackgroundImg] = useState()
+
+	useEffect(() => { 
+			setBackgroundImg(homeBg)
+	}, []);
+
   return (
-	<FadeInView>
-		<ImageBackground
-			source={homeBg}
-			style={styles.homePageImage}>
-			<View style={styles.homeDiv}>
-				<TouchableOpacity style={[styles.button, { width: 220 }]}
-					onPress={() => navigation.navigate("DBSearch")}>
-					<Text style={styles.buttonText_degrees}>
-						Degrees
-					</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={[styles.button, { width: 235 }]}
-					onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
-					<Text style={styles.buttonText_inspired}>
-						..get inspired!
-					</Text>
-				</TouchableOpacity>
-			</View>
-		</ImageBackground>
-	</FadeInView>
+	<>
+		{backgroundImg &&
+			<FadeInView>
+				<ImageBackground
+					source={homeBg}
+					style={styles.homePageImage}>
+					<View style={styles.homeDiv}>
+						<TouchableOpacity style={[styles.button, { width: 220 }]}
+							onPress={() => navigation.navigate("DBSearch")}>
+							<Text style={styles.buttonText_degrees}>
+								Search
+							</Text>
+						</TouchableOpacity>
+						<TouchableOpacity style={[styles.button, { width: 235 }]}
+							onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
+							<Text style={styles.buttonText_inspired}>
+								..get inspired!
+							</Text>
+						</TouchableOpacity>
+					</View>
+				</ImageBackground>
+			</FadeInView>
+		}
+	</>
 	)
 }
 
