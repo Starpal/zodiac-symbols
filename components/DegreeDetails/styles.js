@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 		fontSize: 60,
 		textAlign: 'center',
-		paddingTop: 80,
+		paddingTop: 45,
 		...Platform.select({
 			ios: {
 				marginHorizontal: 15
