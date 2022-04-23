@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { View, ImageBackground } from 'react-native';
 import styles from './styles';
 import * as Animatable from 'react-native-animatable';
@@ -8,23 +8,27 @@ import blackHoleRvt from "../../static/images/blackHolervt.jpeg"
 
 export default function Loading({ type }) {
 
-	let backgroundImg = type === 'random' ? blackHole : blackHoleRvt
+	const [loadingBg, setLoadingBg] = useState()
 
 	useEffect(() => {
-		backgroundImg
+		type === 'random' ? 
+			setLoadingBg(blackHole) : setLoadingBg(blackHoleRvt)
 	}, []);
 
 	return (
-		<ImageBackground source={backgroundImg} style={styles.loadingPageImage}>
-			<View style={styles.main}>
-				<Animatable.Text
-					animation={PULSE}
-					easing="ease-out"
-					iterationCount="infinite"
-					style={styles.loadingText}>
-					Loading...
-				</Animatable.Text>
-			</View>
-		</ImageBackground>
-		)
-	}
+		<>
+		{loadingBg &&
+			<ImageBackground source={loadingBg} style={styles.loadingPageImage}>
+				<View style={styles.main}>
+					<Animatable.Text
+						animation={PULSE}
+						easing="ease-out"
+						iterationCount="infinite"
+						style={styles.loadingText}>
+						Loading...
+					</Animatable.Text>
+				</View>
+			</ImageBackground>}
+		</>
+	)
+}
