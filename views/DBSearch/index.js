@@ -57,8 +57,9 @@ export default function DBSearch({ navigation }) {
 				</View>
 				{showSignError && (
 					<View style={styles.errorContainer}>
-						<Octicons name="telescope" size={Platform.OS == "ios" ? 25 : 16} color="red"/>
-						<Text style={styles.error}>We need a Sign...</Text>
+						<Octicons style={styles.errorShades}name="telescope"
+						size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						<Text style={[styles.error, styles.errorShades]}>We need a Sign...</Text>
 					</View>
 				)}
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
@@ -80,8 +81,9 @@ export default function DBSearch({ navigation }) {
 				</View>
 				{showDegreeError && (
 					<View style={styles.errorContainer}>
-						<Octicons name="telescope" size={Platform.OS == "ios" ? 25 : 16} color="red"/>
-						<Text style={styles.error}>..at some Degree</Text>
+						<Octicons style={styles.errorShades} name="telescope"
+						size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						<Text style={[styles.error, styles.errorShades]}>..at some Degree</Text>
 					</View>
 				)}
 			</View>

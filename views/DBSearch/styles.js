@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 				marginTop: 160,
 			},
 			android: {
-				marginTop: '68%',
+				marginTop: '70%',
 				marginBottom: 87,
 				justifyContent: 'center',
 				alignItems: 'center',
@@ -117,12 +117,12 @@ const styles = StyleSheet.create({
 		})
 	},
 	errorContainer: {
-		paddingTop: 2,
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
 		textAlign: 'left',
 		marginLeft: '-2%',
+		marginTop: '-2%',
 		...Platform.select({
 			ios: {
 				textAlign: 'center',
@@ -142,6 +142,11 @@ const styles = StyleSheet.create({
 				fontSize: 21
 			}
 		})
+	},
+	errorShades: {
+		textShadowColor: 'rgba(0, 0, 0, 0.9)',
+		textShadowOffset: { width: 0.3, height: -0.2 },
+		textShadowRadius: 3
 	}
 })
 
