@@ -76,11 +76,11 @@ export default function App({ navigation }) {
 					options={{ headerTransparent: true, 
 						headerBackImage: () => {
 							return(
-								<View style={{marginLeft: 7}}>
+								<View style={{marginLeft: 5}}>
 									<Ionicons 
 										name="arrow-back"
 										size={28}
-										color="rgba(0, 0, 0, 0.7)"/>
+										color="rgba(0, 0, 0, 0.8)"/>
 								</View>)}
 						}}
 					/>
