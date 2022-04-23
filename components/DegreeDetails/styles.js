@@ -132,8 +132,13 @@ const styles = StyleSheet.create({
 		})
 	},
 	goBackButtonContainer: {
-		marginVertical: 40,
-		alignItems: 'center',
+		marginTop: '11%',
+		marginHorizontal: 100,
+		borderRadius: 30,
+		alignItems: "center",
+		textAlign: "center",
+		padding: 11,
+		backgroundColor: 'rgba(255, 255, 255, 0.25)',
 	},
 	goBackButtonText: {
 		color: 'black',
@@ -141,6 +146,7 @@ const styles = StyleSheet.create({
 		textShadowColor: 'white',
 		textShadowOffset: { width: -0.3, height: 0.7 },
 		textShadowRadius: 1,
+		textAlign: "center",
 		...Platform.select({
 			ios: {
 				fontFamily: 'Helvetica-Oblique'
