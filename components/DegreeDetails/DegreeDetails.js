@@ -1,10 +1,9 @@
 import React, { useState, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ImageBackground, Text, TouchableOpacity } from "react-native";
+import { View, ImageBackground, Text, TouchableOpacity, Animated } from "react-native";
 import styles from "./styles";
 import { OPTIONS } from "../../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
-import { Animated } from "react-native";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 
@@ -87,5 +86,5 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 				</TouchableOpacity>
 			</Animated.ScrollView>
 		</ImageBackground>
-  	);
+	);
 }

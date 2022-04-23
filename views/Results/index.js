@@ -15,23 +15,22 @@ export default function ResultsScreen({ route }) {
 		getRandomSky()
 			.then((Img) => {
 				setApiImg(Img);
-			});
-	}, []);
-
-	useEffect(() => {
-		const searchDegreeArray = [];
-		screen === 'DBSearch' ?
-			getDegreeSearch(sign, degree)
-				.then((search) => {
-					searchDegreeArray.push(search);
-					setGetDegree(searchDegreeArray);
-					setIsLoaded(true);
-				})
-			: getRandomDegree()
-				.then((random) => {
-					setGetDegree(random);
-					setIsLoaded(true);
-			});
+			})
+			.then(()=> {
+				const searchDegreeArray = [];
+				screen === 'DBSearch' ?
+				getDegreeSearch(sign, degree)
+					.then((search) => {
+						searchDegreeArray.push(search);
+						setGetDegree(searchDegreeArray);
+						setIsLoaded(true);
+					})
+				: getRandomDegree()
+					.then((random) => {
+						setGetDegree(random);
+						setIsLoaded(true);
+					})
+			})
 	}, []);
 
 	return (

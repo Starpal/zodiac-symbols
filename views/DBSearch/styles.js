@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
 			},
 			android: {
 				backgroundColor: "rgba(220,220,180, 0.2)",
-				bottom: '7%'
+				bottom: '10%'
 			}
 		})
 	},
