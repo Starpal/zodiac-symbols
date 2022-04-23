@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Ionicons } from '@expo/vector-icons';
 import { Asset } from 'expo-asset';
 import AppLoading from "expo-app-loading";
 import useFonts from './hooks/useFonts';
@@ -8,6 +9,7 @@ import Home from './views/Home/index';
 import DBSearch from './views/DBSearch/index';
 import Results from './views/Results/index';
 import homeBg from "./static/images/MOON3.jpeg";
+import { View } from 'react-native-animatable';
 
 const Stack = createStackNavigator();
 
@@ -57,11 +59,31 @@ export default function App({ navigation }) {
 				<Stack.Screen
 					name="DBSearch"
 					component={DBSearch} navigation={navigation}
-					options={{headerTransparent: true, headerTintColor: 'rgb(222, 101, 111)'}} />
+					options={{headerTransparent: true,
+					headerBackImage: () => {
+						return(
+							<View style={{marginLeft: 10}}>
+								<Ionicons 
+									name="arrow-back"
+									size={30}
+									color="rgb(222, 101, 111)"/>
+							</View>)}
+						}}
+					/>
 				<Stack.Screen
 					name="Results"
 					component={Results} navigation={navigation}
-					options={{ headerTransparent: true, headerTintColor: 'rgba(0, 0, 0, 0.8)'}} />
+					options={{ headerTransparent: true, 
+						headerBackImage: () => {
+							return(
+								<View style={{marginLeft: 7}}>
+									<Ionicons 
+										name="arrow-back"
+										size={28}
+										color="rgba(0, 0, 0, 0.7)"/>
+								</View>)}
+						}}
+					/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	)
