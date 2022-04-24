@@ -22,9 +22,10 @@ const styles = StyleSheet.create({
 				fontFamily: 'BirthstoneBregular'
 			},
 			ios: {
-				color: 'rgba(0, 0, 0, 0.8)',
-				marginTop: 435,
-				fontSize: 80
+				color: 'rgba(0, 0, 0, 0.85)',
+				marginTop: '98%',
+				fontSize: 35,
+				fontFamily: 'Zapfino'
 			}
 		})
 	}
