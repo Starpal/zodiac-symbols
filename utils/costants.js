@@ -22,7 +22,7 @@ const PULSE = {
 		scale: 1,
 	},
 	0.5: {
-		scale: 1.1
+		scale: 1.095
 	},
 	1: {
 		scale: 1

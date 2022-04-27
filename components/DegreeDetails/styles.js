@@ -137,8 +137,16 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		alignItems: "center",
 		padding: 11,
-		backgroundColor: 'rgba(255, 255, 255, 0.6)',
-		elevation: 10
+		...Platform.select({
+			ios: {
+				backgroundColor: 'rgba(255, 255, 255, 0.3)',
+			},
+			android: {
+				backgroundColor: 'rgba(255, 255, 255, 0.7)',
+				elevation: 7
+			}
+		})
+		
 	},
 	goBackButtonText: {
 		color: 'black',

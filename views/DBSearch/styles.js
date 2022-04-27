@@ -29,6 +29,13 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
+	signPicker: {
+		...Platform.select({
+			android: {
+				width: 150,
+			}
+		})
+	},
 	picker: {
 		...Platform.select({
 			ios: {
@@ -77,10 +84,10 @@ const styles = StyleSheet.create({
 		})
 	},
 	buttonSubmitText: {
-		color: "rgba(0, 0, 0, 0.6)",
+		color: "rgba(0, 0, 0, 0.63)",
 		textShadowColor: "rgb(255, 251, 204)",
-		textShadowOffset: { width: -2, height: 1 },
-		textShadowRadius: 20,
+		textShadowOffset: { width: 1, height: 1 },
+		textShadowRadius: 10,
 		textAlign: 'center',
 		...Platform.select({
 			ios: {
@@ -97,10 +104,10 @@ const styles = StyleSheet.create({
 		})
 	},
 	buttonSubmitTextOK: {
-		color: "rgba(0, 0, 0, 0.63)",
+		color: "rgba(0, 0, 0, 0.61)",
+		textShadowOffset: { width: 2, height: 1 },
 		textShadowColor: "rgb(255, 251, 204)",
-		textShadowOffset: { width: -2, height: 1 },
-		textShadowRadius: 20,
+		textShadowRadius: 10,
 		textAlign: 'center',
 		...Platform.select({
 			ios: {

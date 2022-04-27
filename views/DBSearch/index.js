@@ -41,7 +41,8 @@ export default function DBSearch({ navigation }) {
 			<View style={styles.main}>
 				<View style={styles.pickerContainer}>
 				<Picker
-					style={styles.picker}
+					style={[styles.picker, styles.signPicker]}
+					dropdownIconColor='#FAFBFE'
 					selectedValue={sign}
 					onValueChange={(signValue) => setSign(signValue)}
 					itemStyle={styles.signPickerItem} >
@@ -59,13 +60,14 @@ export default function DBSearch({ navigation }) {
 					<View style={styles.errorContainer}>
 						<Octicons style={styles.errorShades}name="telescope"
 						size={Platform.OS == "ios" ? 25 : 16} color="red"/>
-						<Text style={[styles.error, styles.errorShades]}>We need a Sign...</Text>
+						<Text style={[styles.error, styles.errorShades]}>We need a Sign..</Text>
 					</View>
 				)}
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
 				<Picker
 					mode="modal"
 					style={styles.picker}
+					dropdownIconColor='#FAFBFE'
 					selectedValue={degree}
 					onValueChange={(degreeValue) => setDegree(degreeValue)}
 					itemStyle={styles.degreePickerItem} >
@@ -94,8 +96,7 @@ export default function DBSearch({ navigation }) {
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
-					style={ fieldsAreFilled ? styles.buttonSubmitTextOK 
-						: styles.buttonSubmitText }>
+					style={ fieldsAreFilled ? styles.buttonSubmitTextOK : styles.buttonSubmitText }>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>

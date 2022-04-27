@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		padding: 11,
 		backgroundColor: 'rgba(0, 0, 10, 0.45)',
-		elevation: 5
+		elevation: 4
 	},
 	buttonText_degrees: {
 		color: 'rgba(250, 251, 254, 0.8)',
