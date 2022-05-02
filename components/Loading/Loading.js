@@ -27,7 +27,7 @@ export default function Loading({ type }) {
 						easing="ease-out"
 						iterationCount="infinite"
 						style={[Platform.OS == "ios" && height > 700 ?
-						 			{marginTop: '98%'} : {marginTop: '78%'},
+									{marginTop: '98%'} : {marginTop: '78%'},
 						 		styles.loadingText]}>
 						Loading...
 					</Animatable.Text>

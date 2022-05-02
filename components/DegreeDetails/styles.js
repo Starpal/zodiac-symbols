@@ -18,13 +18,16 @@ const styles = StyleSheet.create({
 	main: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		marginHorizontal: 10,
 		fontSize: 60,
 		textAlign: 'center',
-		paddingTop: 45,
 		...Platform.select({
 			ios: {
-				marginHorizontal: 15
+				marginHorizontal: 15,
+				paddingTop: 35,
+			},
+			android : {
+				paddingTop: 20,
+				marginHorizontal: 10
 			}
 		})
 	},
@@ -35,14 +38,12 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		...Platform.select({
 			ios: {
-				marginTop: 40,
-				marginBottom: 30,
+				marginBottom: 60,
 				fontFamily: 'Optima-BoldItalic',
 				fontSize: 65,
 			},
 			android: {
 				marginTop: 10,
-				marginBottom: -10,
 				fontFamily: 'sans-serif-light',
 				fontSize: 57,
 				fontStyle: 'italic'
@@ -78,7 +79,16 @@ const styles = StyleSheet.create({
 		fontSize: 26,
 		fontWeight: 'bold',
 		textAlign: 'center',
-		marginBottom: 35
+		marginBottom: 40,
+		
+		...Platform.select({
+			ios: {
+				marginTop: 30,
+			},
+			android: {
+				marginTop: 15
+			}
+		})
 	},
 	keynote: {
 		width: '99%',

@@ -1,6 +1,13 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, ImageBackground, Text, TouchableOpacity, Animated } from "react-native";
+import { 
+	View,
+	ImageBackground,
+	Text,
+	TouchableOpacity,
+	Animated,
+	useWindowDimensions
+} from "react-native";
 import styles from "./styles";
 import { OPTIONS } from "../../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
@@ -13,9 +20,10 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 	const [backgroundImg, setBackgroundImg] = useState()
 
 	const navigation = useNavigation();
+	const { height } = useWindowDimensions();
 
 	useEffect(() => { 
-			setBackgroundImg(apiImg)
+		setBackgroundImg(apiImg)
 	}, []);
 
 	useLayoutEffect(() => {
@@ -68,10 +76,14 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 				<Animated.ScrollView
 					onScroll={onScroll}
 					scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-					contentContainerStyle={toggleSwitch ? 
-						contentStyle : { backgroundColor: "#ded9d6"} && contentStyle }>
+					contentContainerStyle={[ contentStyle, toggleSwitch &&
+					 { backgroundColor: "white"}] }>
 					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
-						<Text style={styles.sign}>{sign}</Text>
+						<Text style={[ Platform.OS == "ios" && height > 700 ?
+						 {marginTop: 3} : {marginTop: 0},
+									styles.sign]}>
+							{sign}
+						</Text>
 						<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
 						<Text style={styles.title}>{title}</Text>
 						<Text style={styles.keynote}>

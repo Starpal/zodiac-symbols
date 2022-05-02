@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			android: {
 				color: 'rgba(0, 0, 0, 0.7)',
-				marginTop: '94%',
+				marginTop: '95%',
 				fontSize: 55,
 				fontFamily: 'BirthstoneBregular'
 			},
