@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
 			},
 			ios: {
 				color: 'rgba(0, 0, 0, 0.8)',
-				marginTop: '98%',
 				fontSize: 35,
 				fontFamily: 'Zapfino'
 			}

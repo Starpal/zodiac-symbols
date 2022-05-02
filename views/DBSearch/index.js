@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "react-native-gesture-handler";
-import { View, TouchableOpacity, Text, ImageBackground } from "react-native";
+import { 
+	View,
+	TouchableOpacity,
+	Text,
+	ImageBackground,
+	useWindowDimensions
+} from "react-native";
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
 import { SIGNS } from "../../utils/costants";
@@ -14,6 +20,8 @@ export default function DBSearch({ navigation }) {
 	const [degree, setDegree] = useState("Degree");
 	const [showSignError, setSignError] = useState(false);
 	const [showDegreeError, setDegreeError] = useState(false);
+
+	const { height } = useWindowDimensions();
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
@@ -38,7 +46,7 @@ export default function DBSearch({ navigation }) {
 	const fieldsAreFilled = sign !== "Sign" && degree !== "Degree";
 	return (
 		<ImageBackground source={nightSky} style={styles.homePageImage}>
-			<View style={styles.main}>
+			<View style={height > 700 ? styles.main : styles.main_Iphone5}>
 				<View style={styles.pickerContainer}>
 				<Picker
 					style={[styles.picker, styles.signPicker]}
@@ -91,7 +99,7 @@ export default function DBSearch({ navigation }) {
 			</View>
 			<TouchableOpacity 
 				onPress={onSubmit} 
-				style={[styles.buttonSubmit, fieldsAreFilled ? {marginTop: 65}: {marginTop: 40}]}>
+				style={[styles.buttonSubmit, fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"

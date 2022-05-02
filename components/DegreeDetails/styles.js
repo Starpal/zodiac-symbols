@@ -137,6 +137,7 @@ const styles = StyleSheet.create({
 		borderRadius: 30,
 		alignItems: "center",
 		padding: 11,
+		marginBottom: '7%',
 		...Platform.select({
 			ios: {
 				backgroundColor: 'rgba(255, 255, 255, 0.3)',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, ImageBackground } from 'react-native';
+import { View, ImageBackground, useWindowDimensions } from 'react-native';
 import styles from './styles';
 import * as Animatable from 'react-native-animatable';
 import { PULSE } from '../../utils/costants';
@@ -8,7 +8,9 @@ import blackHoleRvt from "../../static/images/blackHolervt.jpeg"
 
 export default function Loading({ type }) {
 
-	const [loadingBg, setLoadingBg] = useState()
+	const [loadingBg, setLoadingBg] = useState();
+
+	const { height } = useWindowDimensions();
 
 	useEffect(() => {
 		type === 'random' ? 
@@ -24,7 +26,9 @@ export default function Loading({ type }) {
 						animation={PULSE}
 						easing="ease-out"
 						iterationCount="infinite"
-						style={styles.loadingText}>
+						style={[Platform.OS == "ios" && height > 700 ?
+						 			{marginTop: '98%'} : {marginTop: '78%'},
+						 		styles.loadingText]}>
 						Loading...
 					</Animatable.Text>
 				</View>

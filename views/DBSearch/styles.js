@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
 	main: {
 		...Platform.select({
 			ios: {
-				marginTop: 160,
+				marginTop: '35%',
 			},
 			android: {
 				marginTop: '70%',
@@ -17,6 +17,13 @@ const styles = StyleSheet.create({
 				justifyContent: 'center',
 				alignItems: 'center',
 				transform: [{ scaleX: 1.5 }, { scaleY: 1.6 }]
+			}
+		})
+	},
+	main_Iphone5: {
+		...Platform.select({
+			ios: {
+				marginTop: '5%'
 			}
 		})
 	},
@@ -40,7 +47,7 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			ios: {
 				fontSize: 60,
-				marginVertical: 5
+				marginVertical: 7
 			},
 			android: {
 				backgroundColor: 'rgba(255, 255, 255, 0.20)',
@@ -72,14 +79,13 @@ const styles = StyleSheet.create({
 		height: 80,
 		position: 'absolute',
 		width: '100%',
+		bottom: '10%',
 		...Platform.select({
 			ios: {
-				backgroundColor: "rgba(220,220,180, 0.20)",
-				bottom: 90
+				backgroundColor: "rgba(220,220,180, 0.20)",	
 			},
 			android: {
 				backgroundColor: "rgba(220,220,180, 0.2)",
-				bottom: '10%'
 			}
 		})
 	},
@@ -104,7 +110,7 @@ const styles = StyleSheet.create({
 		})
 	},
 	buttonSubmitTextOK: {
-		color: "rgba(0, 0, 0, 0.61)",
+		color: "rgba(0, 0, 0, 0.63)",
 		textShadowOffset: { width: 2, height: 1 },
 		textShadowColor: "rgb(255, 251, 204)",
 		textShadowRadius: 10,
