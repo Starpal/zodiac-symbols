@@ -108,7 +108,8 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 						</View>
 					</View>
 					<TouchableOpacity 
-						style={styles.goBackButtonContainer} 
+						style={toggleSwitch ? [styles.goBackButtonContainer, styles.goBackButtonToogled]
+							 	: styles.goBackButtonContainer } 
 						onPress={() => navigation.navigate("Home")}>
 						<Text style={styles.goBackButtonText}>Home</Text>
 					</TouchableOpacity>

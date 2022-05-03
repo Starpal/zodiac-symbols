@@ -150,14 +150,27 @@ const styles = StyleSheet.create({
 		marginBottom: '7%',
 		...Platform.select({
 			ios: {
-				backgroundColor: 'rgba(255, 255, 255, 0.3)',
+				backgroundColor: 'rgba(255, 255, 255, 0.3)'
 			},
 			android: {
 				backgroundColor: 'rgba(255, 255, 255, 0.7)',
 				elevation: 7
 			}
 		})
-		
+	},
+	goBackButtonToogled: {
+		...Platform.select({
+			ios: {
+				borderWidth: 1.3,
+				borderColor: '#ded9d6'
+				
+			},
+			android: {
+				borderWidth: 1.3,
+				borderColor: '#ded9d6',
+				elevation: 0
+			}
+		})
 	},
 	goBackButtonText: {
 		color: 'black',

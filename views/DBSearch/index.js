@@ -28,10 +28,6 @@ export default function DBSearch({ navigation }) {
 		(degree !== "Degree" && setDegreeError(false));
 	});
 
-	function open() {
-		console.log('picker', pickerRef.current)
-	  }
-
 	const onSubmit = () => {
 		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
 					: sign === "Sign" ? setSignError(true) 
@@ -115,14 +111,15 @@ export default function DBSearch({ navigation }) {
 			<TouchableOpacity 
 				onPress={onSubmit} 
 				style={[styles.buttonSubmit, 
-					Platform.OS == "ios" && height > 1300 && {height: 110},
+					Platform.OS == "ios" && height > 1300 && {height: 110, alignItems: 'center'},
 					fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
-					style={[Platform.OS == "ios" && height > 1300 && {fontSize: 80},
-					fieldsAreFilled ? styles.buttonSubmitTextOK : styles.buttonSubmitText]}>
+					style={ fieldsAreFilled ?
+						[styles.buttonSubmitTextOK, Platform.OS == "ios" && height > 1300 && {fontSize: 80}] 
+						: [styles.buttonSubmitText, Platform.OS == "ios" && height > 1300 && {fontSize: 80}]}>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>
