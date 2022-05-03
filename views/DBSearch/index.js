@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "react-native-gesture-handler";
 import { 
 	View,
@@ -22,11 +22,16 @@ export default function DBSearch({ navigation }) {
 	const [showDegreeError, setDegreeError] = useState(false);
 
 	const { height } = useWindowDimensions();
+	const pickerRef = useRef();
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
 		(degree !== "Degree" && setDegreeError(false));
 	});
+
+	function open() {
+		console.log('picker', pickerRef.current)
+	  }
 
 	const onSubmit = () => {
 		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
@@ -44,6 +49,7 @@ export default function DBSearch({ navigation }) {
 	thirtyDegrees.unshift("Degree");
 
 	const fieldsAreFilled = sign !== "Sign" && degree !== "Degree";
+
 	return (
 		<ImageBackground source={nightSky} style={styles.homePageImage}>
 			<View style={height > 700 ? styles.main : styles.main_Iphone5}>
@@ -53,7 +59,8 @@ export default function DBSearch({ navigation }) {
 					dropdownIconColor='#FAFBFE'
 					selectedValue={sign}
 					onValueChange={(signValue) => setSign(signValue)}
-					itemStyle={styles.signPickerItem} >
+					itemStyle={[styles.signPickerItem,
+								Platform.OS == "ios" && height > 1300 && {fontSize: 65}]} >
 					{ SIGNS.map((sign, id) => (
 						<Picker.Item
 							key={id}
@@ -65,10 +72,14 @@ export default function DBSearch({ navigation }) {
 				</Picker>
 				</View>
 				{showSignError && (
-					<View style={styles.errorContainer}>
+					<View style={[styles.errorContainer, 
+						Platform.OS == "ios" && height > 1300 && {marginLeft: '38%'}]}>
 						<Octicons style={styles.errorShades}name="telescope"
-						size={Platform.OS == "ios" ? 25 : 16} color="red"/>
-						<Text style={[styles.error, styles.errorShades]}>We need a Sign..</Text>
+							size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						<Text style={[styles.error, styles.errorShades,
+								Platform.OS == "ios" && height > 1300 && {fontSize: 30}]}>
+							We need a Sign..
+						</Text>
 					</View>
 				)}
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
@@ -78,7 +89,8 @@ export default function DBSearch({ navigation }) {
 					dropdownIconColor='#FAFBFE'
 					selectedValue={degree}
 					onValueChange={(degreeValue) => setDegree(degreeValue)}
-					itemStyle={styles.degreePickerItem} >
+					itemStyle={[styles.degreePickerItem,
+								Platform.OS == "ios" && height > 1300 && {fontSize: 65}]} >
 					{ thirtyDegrees.map((degree, id) => (
 						<Picker.Item
 							key={id}
@@ -90,21 +102,28 @@ export default function DBSearch({ navigation }) {
 				</Picker>
 				</View>
 				{showDegreeError && (
-					<View style={styles.errorContainer}>
+					<View style={[styles.errorContainer,
+						Platform.OS == "ios" && height > 1300 && {marginLeft: '38%'}]}>
 						<Octicons style={styles.errorShades} name="telescope"
-						size={Platform.OS == "ios" ? 25 : 16} color="red"/>
-						<Text style={[styles.error, styles.errorShades]}>..at some Degree</Text>
+							size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						<Text style={[styles.error, styles.errorShades,
+									Platform.OS == "ios" && height > 1300 && {fontSize: 30}]}>
+								..at some Degree
+						</Text>
 					</View>
 				)}
 			</View>
 			<TouchableOpacity 
 				onPress={onSubmit} 
-				style={[styles.buttonSubmit, fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
+				style={[styles.buttonSubmit, 
+					Platform.OS == "ios" && height > 1300 && {height: 110},
+					fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
-					style={ fieldsAreFilled ? styles.buttonSubmitTextOK : styles.buttonSubmitText }>
+					style={[Platform.OS == "ios" && height > 1300 && {fontSize: 80},
+					fieldsAreFilled ? styles.buttonSubmitTextOK : styles.buttonSubmitText]}>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>
