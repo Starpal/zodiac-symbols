@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "react-native-gesture-handler";
-import { View, TouchableOpacity, Text, ImageBackground, Animated } from "react-native";
+import {
+	View,
+	TouchableOpacity,
+	Text,
+	ImageBackground,
+	Animated,
+	useWindowDimensions
+} from "react-native";
 import styles from "./styles";
 
 const FadeInView = (props) => {
@@ -29,7 +36,9 @@ const FadeInView = (props) => {
 
 function HomeScreen({ navigation, homeBg }) {
 
-	const [backgroundImg, setBackgroundImg] = useState()
+	const [backgroundImg, setBackgroundImg] = useState();
+
+	const { height } = useWindowDimensions();
 
 	useEffect(() => { 
 			setBackgroundImg(homeBg)
@@ -43,15 +52,19 @@ function HomeScreen({ navigation, homeBg }) {
 					source={homeBg}
 					style={styles.homePageImage}>
 					<View style={styles.homeDiv}>
-						<TouchableOpacity style={[styles.button, { width: 220 }]}
+						<TouchableOpacity style={[styles.button, 
+							{ width: Platform.OS == "ios" && height > 1300 ? 400 : 220 }]}
 							onPress={() => navigation.navigate("DBSearch")}>
-							<Text style={styles.buttonText_degrees}>
+							<Text style={[styles.buttonText_degrees, 
+									Platform.OS == "ios" && height > 1300 && {fontSize: 40}]}>
 								Search
 							</Text>
 						</TouchableOpacity>
-						<TouchableOpacity style={[styles.button, { width: 235 }]}
+						<TouchableOpacity style={[styles.button,
+							Platform.OS == "ios" && height > 1300 ? {width: 435, marginTop: '9%'} : {width: 235} ]}
 							onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
-							<Text style={styles.buttonText_inspired}>
+							<Text style={[styles.buttonText_inspired,
+									Platform.OS == "ios" && height > 1300 && {fontSize: 42, paddingBottom: 4}]}>
 								..get inspired!
 							</Text>
 						</TouchableOpacity>

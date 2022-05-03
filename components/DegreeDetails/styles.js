@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
 		...Platform.select({
 			ios: {
 				marginHorizontal: 15,
-				paddingTop: 35,
+				paddingTop: 35
 			},
 			android : {
 				paddingTop: 20,

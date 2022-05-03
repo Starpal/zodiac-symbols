@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useWindowDimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Ionicons } from '@expo/vector-icons';
@@ -16,6 +17,8 @@ const Stack = createStackNavigator();
 export default function App({ navigation }) {
 
 	const [IsReady, SetIsReady] = useState(false);
+
+	const { height } = useWindowDimensions();
 
 	//prefetch home page image
 	const fetchHomepageBg = async() => {
@@ -62,10 +65,11 @@ export default function App({ navigation }) {
 					options={{headerTransparent: true,
 					headerBackImage: () => {
 						return(
-							<View style={{marginLeft: 10}}>
+							<View style={Platform.OS == "ios" && height > 1300 ? 
+									{marginLeft: 25,  marginTop: 18} : {marginLeft: 10}}>
 								<Ionicons 
 									name="arrow-back"
-									size={30}
+									size={Platform.OS == "ios" && height > 1300 ? 40 : 30}
 									color="rgb(222, 101, 111)"/>
 							</View>)}
 						}}
@@ -76,10 +80,11 @@ export default function App({ navigation }) {
 					options={{ headerTransparent: true, 
 						headerBackImage: () => {
 							return(
-								<View style={{marginLeft: 5}}>
+								<View style={Platform.OS == "ios" && height > 1300 ? 
+										{marginLeft: 25,  marginTop: 20} : {marginLeft: 5}}>
 									<Ionicons 
 										name="arrow-back"
-										size={28}
+										size={Platform.OS == "ios" && height > 1300 ? 40 : 28}
 										color="rgba(0, 0, 0, 0.8)"/>
 								</View>)}
 						}}

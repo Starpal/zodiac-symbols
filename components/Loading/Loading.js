@@ -26,9 +26,12 @@ export default function Loading({ type }) {
 						animation={PULSE}
 						easing="ease-out"
 						iterationCount="infinite"
-						style={[Platform.OS == "ios" && height > 700 ?
-									{marginTop: '98%'} : {marginTop: '78%'},
-						 		styles.loadingText]}>
+						style={[styles.loadingText, 
+									Platform.OS == "ios" && 
+										height > 1300 ? {marginTop: '60%', fontSize: 50} 
+											: height > 700 ? {marginTop: '98%'} 
+												: {marginTop: '78%'}
+						 		]}>
 						Loading...
 					</Animatable.Text>
 				</View>

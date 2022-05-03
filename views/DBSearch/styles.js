@@ -97,7 +97,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		...Platform.select({
 			ios: {
-				fontSize: 60,
 				fontFamily: 'Optima-BoldItalic',
 				fontWeight: '900',
 				paddingTop: 2
@@ -117,7 +116,6 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		...Platform.select({
 			ios: {
-				fontSize: 60,
 				fontFamily: 'Optima-BoldItalic',
 				fontWeight: '900',
 				paddingTop: 2

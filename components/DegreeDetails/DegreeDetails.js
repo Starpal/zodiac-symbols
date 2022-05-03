@@ -29,12 +29,13 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
-				<View style={{ marginRight: 20 }}>
+				<View style={ Platform.OS == "ios" && height > 1300 ? 
+						{marginRight: 30, marginTop: 20} : {marginRight: 20} }>
 					<Switch
 						activeText={''}
 						inActiveText={''}
-						barHeight={18}
-						circleSize={30}
+						barHeight={Platform.OS == "ios" && height > 1300 ? 30 : 18}
+						circleSize={Platform.OS == "ios" && height > 1300 ? 50 : 30}
 						circleBorderWidth={0}
 						switchWidthMultiplier={1}
 						backgroundActive={"#19a093"}
@@ -45,8 +46,14 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 						switchLeftPx={4}
 						useNativeDriver={true}
 						renderInsideCircle={() => toggleSwitch === true ? 
-							<Ionicons name="planet-outline" size={21} color="#404040"/>
-							: <MaterialCommunityIcons name="glasses" size={21} color="#404040"/>}
+							<Ionicons
+								name="planet-outline"
+								size={Platform.OS == "ios" && height > 1300 ? 30 : 21}
+								color="#404040"/>
+							: <MaterialCommunityIcons
+								name="glasses"
+								size={Platform.OS == "ios" && height > 1300 ? 30 : 21}
+								color="#404040"/>}
 						value={toggleSwitch}
 						onValueChange={(value) => setToggleSwitch(value)} />
 				</View>
@@ -64,7 +71,7 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 
 	const contentStyle = { 
 		paddingVertical: 20, 
-		paddingTop: containerPaddingTop
+		paddingTop: Platform.OS == "ios" && height > 1300 ? 95 : containerPaddingTop
 	}
 
   	return (
@@ -72,15 +79,15 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 		{backgroundImg &&
 			<ImageBackground source={!toggleSwitch ? 
 				{uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
-				style={styles.homePageImage}>
+				style={[styles.homePageImage]}>
 				<Animated.ScrollView
 					onScroll={onScroll}
 					scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-					contentContainerStyle={[ contentStyle, toggleSwitch &&
-					 { backgroundColor: "white"}] }>
-					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6" }]}>
+					contentContainerStyle={[ contentStyle, toggleSwitch && { backgroundColor: "white"},
+						Platform.OS == "ios" && height > 1300 && {minHeight: '100%'}] }>
+					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6"} ]}>
 						<Text style={[ Platform.OS == "ios" && height > 700 ?
-						 {marginTop: 3} : {marginTop: 0},
+										{marginTop: 3} : {marginTop: 0},
 									styles.sign]}>
 							{sign}
 						</Text>
@@ -90,9 +97,10 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 							{keynote}
 							{"\n"}
 						</Text>
-						<View style={[ styles.descriptionContainer, !toggleSwitch && {
-							backgroundColor:
-								Platform.OS == "ios"
+						<View style={[ styles.descriptionContainer, 
+								Platform.OS == "ios" && height > 1300 && {paddingBottom: 40},
+						!toggleSwitch && {
+							backgroundColor: Platform.OS == "ios"
 									? "rgba(253, 251, 253, 0.2)"
 									: "rgba(223, 231, 253, 0.4)",
 							}]}>
