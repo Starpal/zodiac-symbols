@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "react-native-gesture-handler";
 import { 
 	View,
@@ -22,7 +22,6 @@ export default function DBSearch({ navigation }) {
 	const [showDegreeError, setDegreeError] = useState(false);
 
 	const { height } = useWindowDimensions();
-	const pickerRef = useRef();
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
