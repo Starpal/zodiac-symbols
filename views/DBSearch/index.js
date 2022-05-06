@@ -8,11 +8,11 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
-import { SIGNS, IOS } from "../../utils/costants";
+import { SIGNS, IOS, ANDROID } from "../../utils/costants";
 import nightSky from "../../static/images/search.jpeg";
-import * as Animatable from "react-native-animatable";
-import { PULSE } from "../../utils/costants";
 import { Octicons } from "@expo/vector-icons";
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
+import LinearGradient from 'expo-linear-gradient';
 
 export default function DBSearch({ navigation }) {
 	const [sign, setSign] = useState("Sign");
@@ -21,9 +21,12 @@ export default function DBSearch({ navigation }) {
 	const [showDegreeError, setDegreeError] = useState(false);
 
 	useEffect(() => {
-		(sign !== "Sign" && setSignError(false)) ||
-		(degree !== "Degree" && setDegreeError(false));
+		(sign !== "Sign" && setSignError(false)) 
+			|| (degree !== "Degree" && setDegreeError(false));
 	});
+
+	const iosTablet = IOS.platform && IOS.tablet;
+	const androidTablet = ANDROID.platform && ANDROID.tablet;
 
 	const onSubmit = () => {
 		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
@@ -47,12 +50,13 @@ export default function DBSearch({ navigation }) {
 			<View style={IOS.iphone ? styles.main : styles.main_Iphone5}>
 				<View style={styles.pickerContainer}>
 				<Picker
-					style={[styles.picker, styles.signPicker]}
+					style={[styles.picker, styles.signPicker, 
+						androidTablet && {width: 220}]}
 					dropdownIconColor='#FAFBFE'
 					selectedValue={sign}
 					onValueChange={(signValue) => setSign(signValue)}
-					itemStyle={[styles.signPickerItem,
-								IOS.platform && IOS.tablet && {fontSize: 65}]} >
+					itemStyle={[styles.signPickerItem, 
+								iosTablet && {fontSize: 65}]} >
 					{ SIGNS.map((sign, id) => (
 						<Picker.Item
 							key={id}
@@ -64,15 +68,16 @@ export default function DBSearch({ navigation }) {
 				</Picker>
 				</View>
 				{showSignError && (
-					<View style={[styles.errorContainer, 
-						IOS.platform && IOS.tablet && {marginLeft: '38%'}]}>
+					<View style={[styles.errorContainer,
+							iosTablet && { marginLeft: '38%' },
+							ANDROID.tablet && styles.errorContainerAndroid]}>
 						<Octicons
 							color="red"
 							name="telescope"
 							style={styles.errorShades} 
 							size={IOS.platform ? 25 : 16} />
 						<Text style={[styles.error, styles.errorShades,
-								IOS.platform && IOS.tablet && {fontSize: 30}]}>
+								iosTablet && { fontSize: 30 }]}>
 							We need a Sign..
 						</Text>
 					</View>
@@ -80,12 +85,12 @@ export default function DBSearch({ navigation }) {
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
 				<Picker
 					mode="modal"
-					style={styles.picker}
+					style={[styles.picker, androidTablet && {width: 200}]}
 					dropdownIconColor='#FAFBFE'
 					selectedValue={degree}
 					onValueChange={(degreeValue) => setDegree(degreeValue)}
 					itemStyle={[styles.degreePickerItem,
-								IOS.platform && IOS.tablet && {fontSize: 65}]} >
+								iosTablet && {fontSize: 65}]} >
 					{ thirtyDegrees.map((degree, id) => (
 						<Picker.Item
 							key={id}
@@ -97,15 +102,16 @@ export default function DBSearch({ navigation }) {
 				</Picker>
 				</View>
 				{showDegreeError && (
-					<View style={[styles.errorContainer,
-						IOS.platform && IOS.tablet && {marginLeft: '38%'}]}>
+					<View style={[styles.errorContainer, 
+						ANDROID.tablet && styles.errorContainerAndroid,
+							iosTablet && {marginLeft: '38%'}]}>
 						<Octicons
 							color="red"
 							name="telescope"
 							style={styles.errorShades} 
 							size={IOS.platform ? 25 : 16} />
 						<Text style={[styles.error, styles.errorShades,
-									IOS.platform && IOS.tablet && {fontSize: 30}]}>
+									iosTablet && {fontSize: 30}]}>
 								..at some Degree
 						</Text>
 					</View>
@@ -114,15 +120,15 @@ export default function DBSearch({ navigation }) {
 			<TouchableOpacity 
 				onPress={onSubmit} 
 				style={[styles.buttonSubmit, 
-					IOS.platform && IOS.tablet && {height: 110, alignItems: 'center'},
+					iosTablet && {height: 110, alignItems: 'center'},
 					fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
 					style={ fieldsAreFilled ?
-						[styles.buttonSubmitTextOK, IOS.platform && IOS.tablet && {fontSize: 80}] 
-						: [styles.buttonSubmitText, IOS.platform && IOS.tablet && {fontSize: 80}]}>
+						[styles.buttonSubmitTextOK, iosTablet && {fontSize: 80}] 
+						: [styles.buttonSubmitText, iosTablet && {fontSize: 80}]}>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>
