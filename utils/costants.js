@@ -55,4 +55,9 @@ const IOS = {
 	iphone: height > 700
 }
 
-export { SIGNS, PULSE, OPTIONS, IOS };
+const ANDROID = {
+	platform: Platform.OS == "android",
+	tablet: height > 1200
+}
+
+export { SIGNS, PULSE, OPTIONS, IOS, ANDROID };

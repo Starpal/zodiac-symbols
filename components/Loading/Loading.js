@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { View, ImageBackground, useWindowDimensions } from 'react-native';
+import { View, ImageBackground } from 'react-native';
 import styles from './styles';
 import * as Animatable from 'react-native-animatable';
-import { PULSE } from '../../utils/costants';
+import { PULSE, IOS, ANDROID } from '../../utils/costants';
 import blackHole from "../../static/images/blackHole.jpeg"
 import blackHoleRvt from "../../static/images/blackHolervt.jpeg"
 
@@ -10,12 +10,12 @@ export default function Loading({ type }) {
 
 	const [loadingBg, setLoadingBg] = useState();
 
-	const { height } = useWindowDimensions();
-
 	useEffect(() => {
 		type === 'random' ? 
 			setLoadingBg(blackHole) : setLoadingBg(blackHoleRvt)
 	}, []);
+
+	const androidTablet = ANDROID.platform && ANDROID.tablet;
 
 	return (
 		<>
@@ -27,10 +27,10 @@ export default function Loading({ type }) {
 						easing="ease-out"
 						iterationCount="infinite"
 						style={[styles.loadingText, 
-									Platform.OS == "ios" && 
-										height > 1300 ? {marginTop: '60%', fontSize: 50} 
-											: height > 700 ? {marginTop: '98%'} 
-												: {marginTop: '78%'}
+							IOS.platform && IOS.tablet ? {marginTop: '60%', fontSize: 50} :
+								IOS.iphone ? {marginTop: '98%'} : 
+									{marginTop: '78%'}, 
+							androidTablet && {marginTop: '80%', fontSize: 68}
 						 		]}>
 						Loading...
 					</Animatable.Text>

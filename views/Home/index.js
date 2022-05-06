@@ -7,7 +7,7 @@ import {
 	ImageBackground,
 	Animated
 } from "react-native";
-import { IOS } from "../../utils/costants";
+import { IOS, ANDROID } from "../../utils/costants";
 import styles from "./styles";
 
 const FadeInView = (props) => {
@@ -42,6 +42,9 @@ function HomeScreen({ navigation, homeBg }) {
 			setBackgroundImg(homeBg)
 	}, []);
 
+	const iosTablet = IOS.platform && IOS.tablet;
+	const androidTablet = ANDROID.platform && ANDROID.tablet;
+
   return (
 	<>
 		{backgroundImg &&
@@ -51,18 +54,18 @@ function HomeScreen({ navigation, homeBg }) {
 					style={styles.homePageImage}>
 					<View style={styles.homeDiv}>
 						<TouchableOpacity style={[styles.button, 
-							{ width: IOS.platform && IOS.tablet ? 400 : 220 }]}
+							{ width:  androidTablet || iosTablet ? 400 : 220 }]}
 							onPress={() => navigation.navigate("DBSearch")}>
 							<Text style={[styles.buttonText_degrees, 
-									IOS.platform && IOS.tablet && {fontSize: 40}]}>
+									(androidTablet || iosTablet) && {fontSize: 40}]}>
 								Search
 							</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={[styles.button,
-							IOS.platform && IOS.tablet ? {width: 435, marginTop: '9%'} : {width: 235} ]}
+							androidTablet || iosTablet ? {width: 435, marginTop: '9%'} : {width: 235} ]}
 							onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
 							<Text style={[styles.buttonText_inspired,
-									IOS.platform && IOS.tablet && {fontSize: 42, paddingBottom: 4}]}>
+									(androidTablet || iosTablet) && {fontSize: 42, paddingBottom: 4}]}>
 								..get inspired!
 							</Text>
 						</TouchableOpacity>

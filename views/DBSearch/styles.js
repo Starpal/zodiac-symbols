@@ -144,6 +144,9 @@ const styles = StyleSheet.create({
 			}
 		})
 	},
+	errorContainerAndroid: {
+		marginTop: 2
+	},
 	error: {
 		textAlign: 'center',
 		color: 'red',

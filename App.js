@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useWindowDimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { View } from 'react-native-animatable';
 import { Ionicons } from '@expo/vector-icons';
 import { Asset } from 'expo-asset';
 import AppLoading from "expo-app-loading";
@@ -10,15 +10,13 @@ import Home from './views/Home/index';
 import DBSearch from './views/DBSearch/index';
 import Results from './views/Results/index';
 import homeBg from "./static/images/MOON3.jpeg";
-import { View } from 'react-native-animatable';
+import { IOS, ANDROID } from "./utils/costants";
 
 const Stack = createStackNavigator();
 
 export default function App({ navigation }) {
 
 	const [IsReady, SetIsReady] = useState(false);
-
-	const { height } = useWindowDimensions();
 
 	//prefetch home page image
 	const fetchHomepageBg = async() => {
@@ -51,6 +49,9 @@ export default function App({ navigation }) {
     	);
   	}
 
+	const iosTablet = IOS.platform && IOS.tablet;
+	const androidTablet = ANDROID.platform && ANDROID.tablet;
+
 	return (
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
@@ -65,11 +66,11 @@ export default function App({ navigation }) {
 					options={{headerTransparent: true,
 					headerBackImage: () => {
 						return(
-							<View style={Platform.OS == "ios" && height > 1300 ? 
-									{marginLeft: 25,  marginTop: 18} : {marginLeft: 10}}>
+							<View style={[iosTablet ? { marginLeft: 25,  marginTop: 18} : { marginLeft: 10 },
+									androidTablet && { marginLeft: 25, marginTop: 10 }]}>
 								<Ionicons 
 									name="arrow-back"
-									size={Platform.OS == "ios" && height > 1300 ? 40 : 30}
+									size={iosTablet || androidTablet ? 40 : 30}
 									color="rgb(222, 101, 111)"/>
 							</View>)}
 						}}
@@ -80,11 +81,11 @@ export default function App({ navigation }) {
 					options={{ headerTransparent: true, 
 						headerBackImage: () => {
 							return(
-								<View style={Platform.OS == "ios" && height > 1300 ? 
-										{marginLeft: 25,  marginTop: 20} : {marginLeft: 5}}>
+								<View style={[iosTablet ? { marginLeft: 25,  marginTop: 20 } : { marginLeft: 5 },
+										androidTablet && { paddingLeft: 25, paddingTop: 17 }]}>
 									<Ionicons 
 										name="arrow-back"
-										size={Platform.OS == "ios" && height > 1300 ? 40 : 28}
+										size={iosTablet || androidTablet ? 40 : 28}
 										color="rgba(0, 0, 0, 0.8)"/>
 								</View>)}
 						}}
