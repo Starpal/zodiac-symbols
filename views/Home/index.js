@@ -5,9 +5,9 @@ import {
 	TouchableOpacity,
 	Text,
 	ImageBackground,
-	Animated,
-	useWindowDimensions
+	Animated
 } from "react-native";
+import { IOS } from "../../utils/costants";
 import styles from "./styles";
 
 const FadeInView = (props) => {
@@ -38,8 +38,6 @@ function HomeScreen({ navigation, homeBg }) {
 
 	const [backgroundImg, setBackgroundImg] = useState();
 
-	const { height } = useWindowDimensions();
-
 	useEffect(() => { 
 			setBackgroundImg(homeBg)
 	}, []);
@@ -53,18 +51,18 @@ function HomeScreen({ navigation, homeBg }) {
 					style={styles.homePageImage}>
 					<View style={styles.homeDiv}>
 						<TouchableOpacity style={[styles.button, 
-							{ width: Platform.OS == "ios" && height > 1300 ? 400 : 220 }]}
+							{ width: IOS.platform && IOS.tablet ? 400 : 220 }]}
 							onPress={() => navigation.navigate("DBSearch")}>
 							<Text style={[styles.buttonText_degrees, 
-									Platform.OS == "ios" && height > 1300 && {fontSize: 40}]}>
+									IOS.platform && IOS.tablet && {fontSize: 40}]}>
 								Search
 							</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={[styles.button,
-							Platform.OS == "ios" && height > 1300 ? {width: 435, marginTop: '9%'} : {width: 235} ]}
+							IOS.platform && IOS.tablet ? {width: 435, marginTop: '9%'} : {width: 235} ]}
 							onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
 							<Text style={[styles.buttonText_inspired,
-									Platform.OS == "ios" && height > 1300 && {fontSize: 42, paddingBottom: 4}]}>
+									IOS.platform && IOS.tablet && {fontSize: 42, paddingBottom: 4}]}>
 								..get inspired!
 							</Text>
 						</TouchableOpacity>

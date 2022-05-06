@@ -4,12 +4,11 @@ import {
 	View,
 	TouchableOpacity,
 	Text,
-	ImageBackground,
-	useWindowDimensions
+	ImageBackground
 } from "react-native";
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
-import { SIGNS } from "../../utils/costants";
+import { SIGNS, IOS } from "../../utils/costants";
 import nightSky from "../../static/images/search.jpeg";
 import * as Animatable from "react-native-animatable";
 import { PULSE } from "../../utils/costants";
@@ -20,8 +19,6 @@ export default function DBSearch({ navigation }) {
 	const [degree, setDegree] = useState("Degree");
 	const [showSignError, setSignError] = useState(false);
 	const [showDegreeError, setDegreeError] = useState(false);
-
-	const { height } = useWindowDimensions();
 
 	useEffect(() => {
 		(sign !== "Sign" && setSignError(false)) ||
@@ -47,7 +44,7 @@ export default function DBSearch({ navigation }) {
 
 	return (
 		<ImageBackground source={nightSky} style={styles.homePageImage}>
-			<View style={height > 700 ? styles.main : styles.main_Iphone5}>
+			<View style={IOS.iphone ? styles.main : styles.main_Iphone5}>
 				<View style={styles.pickerContainer}>
 				<Picker
 					style={[styles.picker, styles.signPicker]}
@@ -55,7 +52,7 @@ export default function DBSearch({ navigation }) {
 					selectedValue={sign}
 					onValueChange={(signValue) => setSign(signValue)}
 					itemStyle={[styles.signPickerItem,
-								Platform.OS == "ios" && height > 1300 && {fontSize: 65}]} >
+								IOS.platform && IOS.tablet && {fontSize: 65}]} >
 					{ SIGNS.map((sign, id) => (
 						<Picker.Item
 							key={id}
@@ -68,11 +65,14 @@ export default function DBSearch({ navigation }) {
 				</View>
 				{showSignError && (
 					<View style={[styles.errorContainer, 
-						Platform.OS == "ios" && height > 1300 && {marginLeft: '38%'}]}>
-						<Octicons style={styles.errorShades}name="telescope"
-							size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						IOS.platform && IOS.tablet && {marginLeft: '38%'}]}>
+						<Octicons
+							color="red"
+							name="telescope"
+							style={styles.errorShades} 
+							size={IOS.platform ? 25 : 16} />
 						<Text style={[styles.error, styles.errorShades,
-								Platform.OS == "ios" && height > 1300 && {fontSize: 30}]}>
+								IOS.platform && IOS.tablet && {fontSize: 30}]}>
 							We need a Sign..
 						</Text>
 					</View>
@@ -85,7 +85,7 @@ export default function DBSearch({ navigation }) {
 					selectedValue={degree}
 					onValueChange={(degreeValue) => setDegree(degreeValue)}
 					itemStyle={[styles.degreePickerItem,
-								Platform.OS == "ios" && height > 1300 && {fontSize: 65}]} >
+								IOS.platform && IOS.tablet && {fontSize: 65}]} >
 					{ thirtyDegrees.map((degree, id) => (
 						<Picker.Item
 							key={id}
@@ -98,11 +98,14 @@ export default function DBSearch({ navigation }) {
 				</View>
 				{showDegreeError && (
 					<View style={[styles.errorContainer,
-						Platform.OS == "ios" && height > 1300 && {marginLeft: '38%'}]}>
-						<Octicons style={styles.errorShades} name="telescope"
-							size={Platform.OS == "ios" ? 25 : 16} color="red"/>
+						IOS.platform && IOS.tablet && {marginLeft: '38%'}]}>
+						<Octicons
+							color="red"
+							name="telescope"
+							style={styles.errorShades} 
+							size={IOS.platform ? 25 : 16} />
 						<Text style={[styles.error, styles.errorShades,
-									Platform.OS == "ios" && height > 1300 && {fontSize: 30}]}>
+									IOS.platform && IOS.tablet && {fontSize: 30}]}>
 								..at some Degree
 						</Text>
 					</View>
@@ -111,15 +114,15 @@ export default function DBSearch({ navigation }) {
 			<TouchableOpacity 
 				onPress={onSubmit} 
 				style={[styles.buttonSubmit, 
-					Platform.OS == "ios" && height > 1300 && {height: 110, alignItems: 'center'},
+					IOS.platform && IOS.tablet && {height: 110, alignItems: 'center'},
 					fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
 					style={ fieldsAreFilled ?
-						[styles.buttonSubmitTextOK, Platform.OS == "ios" && height > 1300 && {fontSize: 80}] 
-						: [styles.buttonSubmitText, Platform.OS == "ios" && height > 1300 && {fontSize: 80}]}>
+						[styles.buttonSubmitTextOK, IOS.platform && IOS.tablet && {fontSize: 80}] 
+						: [styles.buttonSubmitText, IOS.platform && IOS.tablet && {fontSize: 80}]}>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>

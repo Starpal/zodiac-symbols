@@ -5,11 +5,10 @@ import {
 	ImageBackground,
 	Text,
 	TouchableOpacity,
-	Animated,
-	useWindowDimensions
+	Animated
 } from "react-native";
 import styles from "./styles";
-import { OPTIONS } from "../../utils/costants";
+import { OPTIONS, IOS } from "../../utils/costants";
 import { useCollapsibleHeader } from "react-navigation-collapsible";
 import { Switch } from "react-native-switch";
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
@@ -20,7 +19,6 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 	const [backgroundImg, setBackgroundImg] = useState()
 
 	const navigation = useNavigation();
-	const { height } = useWindowDimensions();
 
 	useEffect(() => { 
 		setBackgroundImg(apiImg)
@@ -29,13 +27,13 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
-				<View style={ Platform.OS == "ios" && height > 1300 ? 
+				<View style={ IOS.platform && IOS.tablet ? 
 						{marginRight: 30, marginTop: 20} : {marginRight: 20} }>
 					<Switch
 						activeText={''}
 						inActiveText={''}
-						barHeight={Platform.OS == "ios" && height > 1300 ? 30 : 18}
-						circleSize={Platform.OS == "ios" && height > 1300 ? 50 : 30}
+						barHeight={IOS.platform && IOS.tablet ? 30 : 18}
+						circleSize={IOS.platform && IOS.tablet ? 50 : 30}
 						circleBorderWidth={0}
 						switchWidthMultiplier={1}
 						backgroundActive={"#19a093"}
@@ -48,11 +46,11 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 						renderInsideCircle={() => toggleSwitch === true ? 
 							<Ionicons
 								name="planet-outline"
-								size={Platform.OS == "ios" && height > 1300 ? 30 : 21}
+								size={IOS.platform && IOS.tablet ? 30 : 21}
 								color="#404040"/>
 							: <MaterialCommunityIcons
 								name="glasses"
-								size={Platform.OS == "ios" && height > 1300 ? 30 : 21}
+								size={IOS.platform && IOS.tablet ? 30 : 21}
 								color="#404040"/>}
 						value={toggleSwitch}
 						onValueChange={(value) => setToggleSwitch(value)} />
@@ -71,7 +69,7 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 
 	const contentStyle = { 
 		paddingVertical: 20, 
-		paddingTop: Platform.OS == "ios" && height > 1300 ? 95 : containerPaddingTop
+		paddingTop: IOS.platform && IOS.tablet ? 95 : containerPaddingTop
 	}
 
   	return (
@@ -84,9 +82,9 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 					onScroll={onScroll}
 					scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
 					contentContainerStyle={[ contentStyle, toggleSwitch && { backgroundColor: "white"},
-						Platform.OS == "ios" && height > 1300 && {minHeight: '100%'}] }>
+						IOS.platform && IOS.tablet && {minHeight: '100%'}] }>
 					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6"} ]}>
-						<Text style={[ Platform.OS == "ios" && height > 700 ?
+						<Text style={[ IOS.platform && IOS.iphone ?
 										{marginTop: 3} : {marginTop: 0},
 									styles.sign]}>
 							{sign}
@@ -98,9 +96,9 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 							{"\n"}
 						</Text>
 						<View style={[ styles.descriptionContainer, 
-								Platform.OS == "ios" && height > 1300 && {paddingBottom: 40},
+								IOS.platform && IOS.tablet && {paddingBottom: 40},
 						!toggleSwitch && {
-							backgroundColor: Platform.OS == "ios"
+							backgroundColor: IOS.platform
 									? "rgba(253, 251, 253, 0.2)"
 									: "rgba(223, 231, 253, 0.4)",
 							}]}>
