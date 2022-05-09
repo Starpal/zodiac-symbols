@@ -24,19 +24,16 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 		setBackgroundImg(apiImg)
 	}, []);
 
-	const iosTablet = IOS.platform && IOS.tablet;
-	const androidTablet = ANDROID.platform && ANDROID.tablet;
-
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			headerRight: () => (
-				<View style={ androidTablet || iosTablet ? 
+				<View style={ ANDROID.tablet || IOS.tablet ? 
 						{marginRight: 30, marginTop: 20} : {marginRight: 20} }>
 					<Switch
 						activeText={''}
 						inActiveText={''}
-						barHeight={androidTablet || iosTablet ? 30 : 18}
-						circleSize={androidTablet || iosTablet ? 50 : 30}
+						barHeight={ANDROID.tablet || IOS.tablet ? 30 : 18}
+						circleSize={ANDROID.tablet || IOS.tablet ? 50 : 30}
 						circleBorderWidth={0}
 						switchWidthMultiplier={1}
 						backgroundActive={"#19a093"}
@@ -49,11 +46,11 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 						renderInsideCircle={() => toggleSwitch === true ? 
 							<Ionicons
 								name="planet-outline"
-								size={androidTablet || iosTablet ? 30 : 21}
+								size={ANDROID.tablet || IOS.tablet ? 30 : 21}
 								color="#404040"/>
 							: <MaterialCommunityIcons
 								name="glasses"
-								size={androidTablet || iosTablet ? 30 : 21}
+								size={ANDROID.tablet || IOS.tablet ? 30 : 21}
 								color="#404040"/>}
 						value={toggleSwitch}
 						onValueChange={(value) => setToggleSwitch(value)} />
@@ -72,49 +69,48 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 
 	const contentStyle = { 
 		paddingVertical: 20, 
-		paddingTop: iosTablet ? 95 : containerPaddingTop
+		paddingTop: IOS.tablet ? 95 : containerPaddingTop
 	}
 
   	return (
 		<>
-		{backgroundImg &&
-			<ImageBackground source={!toggleSwitch ? 
-				{uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
-				style={[styles.homePageImage]}>
-				<Animated.ScrollView
-					onScroll={onScroll}
-					scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
-					contentContainerStyle={[ contentStyle, toggleSwitch && { backgroundColor: "white"},
-						iosTablet && {minHeight: '100%'}] }>
-					<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6"} ]}>
-						<Text style={[ IOS.platform && IOS.iphone ?
-										{marginTop: 3} : {marginTop: 0},
-									styles.sign]}>
-							{sign}
-						</Text>
-						<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
-						<Text style={styles.title}>{title}</Text>
-						<Text style={styles.keynote}>
-							{keynote}
-							{"\n"}
-						</Text>
-						<View style={[ styles.descriptionContainer, 
-								iosTablet && {paddingBottom: 40},
-						!toggleSwitch && {
-							backgroundColor: IOS.platform
-									? "rgba(253, 251, 253, 0.2)"
-									: "rgba(223, 231, 253, 0.4)",
-							}]}>
-							<Text style={styles.description}>{description}</Text>
+			{backgroundImg &&
+				<ImageBackground source={!toggleSwitch ? 
+					{uri: `data:${apiImg[0]};base64,${apiImg[1]}`} : null}
+					style={[styles.homePageImage]}>
+					<Animated.ScrollView
+						onScroll={onScroll}
+						scrollIndicatorInsets={{ top: scrollIndicatorInsetTop, right: 1 }}
+						contentContainerStyle={[ contentStyle, toggleSwitch && { backgroundColor: "white"},
+							IOS.tablet && {minHeight: '100%'}] }>
+						<View style={[styles.main, toggleSwitch && { backgroundColor: "#ded9d6"} ]}>
+							<Text style={[ IOS.platform && IOS.iphone ? {marginTop: 3} : {marginTop: 0},
+										styles.sign]}>
+								{sign}
+							</Text>
+							<Text style={styles.degree}>{'\t'}{degree + "°"}{'\t'}</Text>
+							<Text style={styles.title}>{title}</Text>
+							<Text style={styles.keynote}>
+								{keynote}
+								{"\n"}
+							</Text>
+							<View style={[ styles.descriptionContainer, IOS.tablet && {paddingBottom: 40},
+								!toggleSwitch && {
+									backgroundColor: IOS.platform
+											? "rgba(253, 251, 253, 0.2)"
+											: "rgba(223, 231, 253, 0.4)",
+									}]}>
+								<Text style={styles.description}>{description}</Text>
+							</View>
 						</View>
-					</View>
-					<TouchableOpacity 
-						style={toggleSwitch ? [styles.goBackButtonContainer, styles.goBackButtonToogled]
-							 	: styles.goBackButtonContainer } 
-						onPress={() => navigation.navigate("Home")}>
-						<Text style={styles.goBackButtonText}>Home</Text>
-					</TouchableOpacity>
-				</Animated.ScrollView>
-			</ImageBackground>}
-		</>);
+						<TouchableOpacity 
+							style={toggleSwitch ? [styles.goBackButtonContainer, styles.goBackButtonToogled]
+									: styles.goBackButtonContainer } 
+							onPress={() => navigation.navigate("Home")}>
+							<Text style={styles.goBackButtonText}>Home</Text>
+						</TouchableOpacity>
+					</Animated.ScrollView>
+				</ImageBackground>
+			}
+	</>);
 }

@@ -42,9 +42,6 @@ function HomeScreen({ navigation, homeBg }) {
 			setBackgroundImg(homeBg)
 	}, []);
 
-	const iosTablet = IOS.platform && IOS.tablet;
-	const androidTablet = ANDROID.platform && ANDROID.tablet;
-
   return (
 	<>
 		{backgroundImg &&
@@ -53,19 +50,18 @@ function HomeScreen({ navigation, homeBg }) {
 					source={homeBg}
 					style={styles.homePageImage}>
 					<View style={styles.homeDiv}>
-						<TouchableOpacity style={[styles.button, 
-							{ width:  androidTablet || iosTablet ? 400 : 220 }]}
+						<TouchableOpacity style={[styles.button, { width:  ANDROID.tablet || IOS.tablet ? 400 : 220 }]}
 							onPress={() => navigation.navigate("DBSearch")}>
 							<Text style={[styles.buttonText_degrees, 
-									(androidTablet || iosTablet) && {fontSize: 40}]}>
+									(ANDROID.tablet || IOS.tablet) && {fontSize: 40}]}>
 								Search
 							</Text>
 						</TouchableOpacity>
 						<TouchableOpacity style={[styles.button,
-							androidTablet || iosTablet ? {width: 435, marginTop: '9%'} : {width: 235} ]}
+							ANDROID.tablet || IOS.tablet ? {width: 435, marginTop: '9%'} : {width: 235} ]}
 							onPress={() => navigation.navigate("Results", {screen: 'Random'})}>
 							<Text style={[styles.buttonText_inspired,
-									(androidTablet || iosTablet) && {fontSize: 42, paddingBottom: 4}]}>
+									(ANDROID.tablet || IOS.tablet) && {fontSize: 42, paddingBottom: 4}]}>
 								..get inspired!
 							</Text>
 						</TouchableOpacity>

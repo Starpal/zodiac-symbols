@@ -6,13 +6,12 @@ import {
 	Text,
 	ImageBackground
 } from "react-native";
+import * as Animatable from 'react-native-animatable';
 import styles from "./styles";
 import { Picker } from "@react-native-picker/picker";
-import { SIGNS, IOS, ANDROID } from "../../utils/costants";
+import { SIGNS, PULSE, IOS, ANDROID } from "../../utils/costants";
 import nightSky from "../../static/images/search.jpeg";
 import { Octicons } from "@expo/vector-icons";
-import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
-import LinearGradient from 'expo-linear-gradient';
 
 export default function DBSearch({ navigation }) {
 	const [sign, setSign] = useState("Sign");
@@ -25,9 +24,6 @@ export default function DBSearch({ navigation }) {
 			|| (degree !== "Degree" && setDegreeError(false));
 	});
 
-	const iosTablet = IOS.platform && IOS.tablet;
-	const androidTablet = ANDROID.platform && ANDROID.tablet;
-
 	const onSubmit = () => {
 		return	sign === "Sign" && degree === "Degree" ? setSignError(true)|| setDegreeError(true) 
 					: sign === "Sign" ? setSignError(true) 
@@ -35,8 +31,7 @@ export default function DBSearch({ navigation }) {
 							: navigation.navigate("Results", {
 									screen: "DBSearch",
 									sign,
-									degree
-								});
+									degree });
 	};
 
 	// Generate an array of 30° & add 'Degree' placeholder at the beginning.
@@ -47,37 +42,33 @@ export default function DBSearch({ navigation }) {
 
 	return (
 		<ImageBackground source={nightSky} style={styles.homePageImage}>
-			<View style={IOS.iphone ? styles.main : styles.main_Iphone5}>
+			<View style={IOS.platform && IOS.iphone5Screen ? styles.main_Iphone5 : styles.main}>
 				<View style={styles.pickerContainer}>
 				<Picker
-					style={[styles.picker, styles.signPicker, 
-						androidTablet && {width: 220}]}
+					style={[styles.picker, styles.signPicker, ANDROID.tablet && {width: 220}]}
 					dropdownIconColor='#FAFBFE'
 					selectedValue={sign}
 					onValueChange={(signValue) => setSign(signValue)}
-					itemStyle={[styles.signPickerItem, 
-								iosTablet && {fontSize: 65}]} >
-					{ SIGNS.map((sign, id) => (
-						<Picker.Item
-							key={id}
-							label={sign}
-							value={sign}
-							style={id !== 0 ? { color: "black" } : { color: "gray" }}
-							enabled={id !== 0} />
+					itemStyle={[styles.signPickerItem, IOS.tablet && {fontSize: 65}]}>
+						{ SIGNS.map((sign, id) => (
+							<Picker.Item
+								key={id}
+								label={sign}
+								value={sign}
+								style={id !== 0 ? { color: "black" } : { color: "gray" }}
+								enabled={id !== 0} />
 						))}
 				</Picker>
 				</View>
 				{showSignError && (
-					<View style={[styles.errorContainer,
-							iosTablet && { marginLeft: '38%' },
+					<View style={[styles.errorContainer, IOS.tablet && { marginLeft: '38%' },
 							ANDROID.tablet && styles.errorContainerAndroid]}>
 						<Octicons
 							color="red"
 							name="telescope"
 							style={styles.errorShades} 
 							size={IOS.platform ? 25 : 16} />
-						<Text style={[styles.error, styles.errorShades,
-								iosTablet && { fontSize: 30 }]}>
+						<Text style={[styles.error, styles.errorShades, IOS.tablet && { fontSize: 30 }]}>
 							We need a Sign..
 						</Text>
 					</View>
@@ -85,33 +76,31 @@ export default function DBSearch({ navigation }) {
 				<View style={[styles.pickerContainer, { marginTop: 35 }]}>
 				<Picker
 					mode="modal"
-					style={[styles.picker, androidTablet && {width: 200}]}
+					style={[styles.picker, ANDROID.tablet && {width: 200}]}
 					dropdownIconColor='#FAFBFE'
 					selectedValue={degree}
 					onValueChange={(degreeValue) => setDegree(degreeValue)}
-					itemStyle={[styles.degreePickerItem,
-								iosTablet && {fontSize: 65}]} >
-					{ thirtyDegrees.map((degree, id) => (
-						<Picker.Item
-							key={id}
-							value={degree}
-							label={degree[0] ? degree : degree + "°"}
-							style={degree[0] ? { color: "gray" } : { color: "black" }}
-							enabled={degree[0] && false} />
+					itemStyle={[styles.degreePickerItem, IOS.tablet && {fontSize: 65}]} >
+						{ thirtyDegrees.map((degree, id) => (
+							<Picker.Item
+								key={id}
+								value={degree}
+								label={degree[0] ? degree : degree + "°"}
+								style={degree[0] ? { color: "gray" } : { color: "black" }}
+								enabled={degree[0] && false} />
 						))}
 				</Picker>
 				</View>
 				{showDegreeError && (
 					<View style={[styles.errorContainer, 
 						ANDROID.tablet && styles.errorContainerAndroid,
-							iosTablet && {marginLeft: '38%'}]}>
+							IOS.tablet && {marginLeft: '38%'}]}>
 						<Octicons
 							color="red"
 							name="telescope"
 							style={styles.errorShades} 
 							size={IOS.platform ? 25 : 16} />
-						<Text style={[styles.error, styles.errorShades,
-									iosTablet && {fontSize: 30}]}>
+						<Text style={[styles.error, styles.errorShades, IOS.tablet && {fontSize: 30}]}>
 								..at some Degree
 						</Text>
 					</View>
@@ -120,15 +109,15 @@ export default function DBSearch({ navigation }) {
 			<TouchableOpacity 
 				onPress={onSubmit} 
 				style={[styles.buttonSubmit, 
-					iosTablet && {height: 110, alignItems: 'center'},
+					IOS.tablet && {height: 110, alignItems: 'center'},
 					fieldsAreFilled ? {marginTop: 65} : {marginTop: 40}]}>
 				<Animatable.Text
 					animation={fieldsAreFilled ? PULSE : null}
 					easing="ease-out"
 					iterationCount='infinite' 
 					style={ fieldsAreFilled ?
-						[styles.buttonSubmitTextOK, iosTablet && {fontSize: 80}] 
-						: [styles.buttonSubmitText, iosTablet && {fontSize: 80}]}>
+						[styles.buttonSubmitTextOK, IOS.tablet && {fontSize: 80}] 
+						: [styles.buttonSubmitText, IOS.tablet && {fontSize: 80}]}>
 					{"\t"}Search {"\t"}
 				</Animatable.Text>
 			</TouchableOpacity>

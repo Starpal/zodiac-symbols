@@ -49,9 +49,6 @@ export default function App({ navigation }) {
     	);
   	}
 
-	const iosTablet = IOS.platform && IOS.tablet;
-	const androidTablet = ANDROID.platform && ANDROID.tablet;
-
 	return (
 		<NavigationContainer>
 			<Stack.Navigator screenOptions={{ title: '', headerBackTitleVisible: ''}}>
@@ -66,11 +63,11 @@ export default function App({ navigation }) {
 					options={{headerTransparent: true,
 					headerBackImage: () => {
 						return(
-							<View style={[iosTablet ? { marginLeft: 25,  marginTop: 18} : { marginLeft: 10 },
-									androidTablet && { marginLeft: 25, marginTop: 10 }]}>
+							<View style={[IOS.tablet ? { marginLeft: 25,  marginTop: 18} : { marginLeft: 10 },
+									ANDROID.tablet && { marginLeft: 25, marginTop: 10 }]}>
 								<Ionicons 
 									name="arrow-back"
-									size={iosTablet || androidTablet ? 40 : 30}
+									size={IOS.tablet || ANDROID.tablet ? 40 : 30}
 									color="rgb(222, 101, 111)"/>
 							</View>)}
 						}}
@@ -81,11 +78,11 @@ export default function App({ navigation }) {
 					options={{ headerTransparent: true, 
 						headerBackImage: () => {
 							return(
-								<View style={[iosTablet ? { marginLeft: 25,  marginTop: 20 } : { marginLeft: 5 },
-										androidTablet && { paddingLeft: 25, paddingTop: 17 }]}>
+								<View style={[IOS.tablet ? { marginLeft: 25,  marginTop: 20 } : { marginLeft: 5 },
+										ANDROID.tablet && { paddingLeft: 25, paddingTop: 17 }]}>
 									<Ionicons 
 										name="arrow-back"
-										size={iosTablet || androidTablet ? 40 : 28}
+										size={IOS.tablet || ANDROID.tablet ? 40 : 28}
 										color="rgba(0, 0, 0, 0.8)"/>
 								</View>)}
 						}}

@@ -15,8 +15,6 @@ export default function Loading({ type }) {
 			setLoadingBg(blackHole) : setLoadingBg(blackHoleRvt)
 	}, []);
 
-	const androidTablet = ANDROID.platform && ANDROID.tablet;
-
 	return (
 		<>
 		{loadingBg &&
@@ -26,11 +24,9 @@ export default function Loading({ type }) {
 						animation={PULSE}
 						easing="ease-out"
 						iterationCount="infinite"
-						style={[styles.loadingText, 
-							IOS.platform && IOS.tablet ? {marginTop: '60%', fontSize: 50} :
-								IOS.iphone ? {marginTop: '98%'} : 
-									{marginTop: '78%'}, 
-							androidTablet && {marginTop: '80%', fontSize: 68}
+						style={[styles.loadingText, IOS.tablet ? {marginTop: '60%', fontSize: 50} 
+								: IOS.iphoneScreen ? {marginTop: '98%'} : {marginTop: '78%'}, 
+									ANDROID.tablet && {marginTop: '80%', fontSize: 68}
 						 		]}>
 						Loading...
 					</Animatable.Text>

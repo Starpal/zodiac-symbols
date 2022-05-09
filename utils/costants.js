@@ -51,13 +51,16 @@ const OPTIONS = {
 
 const IOS = { 
 	platform: Platform.OS == "ios",
-	tablet: height > 1300,
-	iphone: height > 700
+	tabletScreen: height > 1300,
+	iphoneScreen: height > 700,
+	iphone5Screen: height < 700,
+	tablet: Platform.OS == "ios" && height > 1300
 }
 
 const ANDROID = {
 	platform: Platform.OS == "android",
-	tablet: height > 1200
+	tabletScreen: height > 1200,
+	tablet: Platform.OS == "android" && height > 1200
 }
 
 export { SIGNS, PULSE, OPTIONS, IOS, ANDROID };
