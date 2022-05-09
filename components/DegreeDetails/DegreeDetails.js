@@ -69,7 +69,7 @@ export default function DegreeDetails({ apiImg, sign, degree, title, keynote, de
 
 	const contentStyle = { 
 		paddingVertical: 20, 
-		paddingTop: IOS.tablet ? 95 : containerPaddingTop
+		paddingTop: ANDROID. tablet || IOS.tablet ? 95 : containerPaddingTop
 	}
 
   	return (
